@@ -12,31 +12,40 @@
 <body>
 
     <header>
+            <img class="flags"src="images/flags/us.svg" alt="USA's flag" width="30" height="20">
+            <img class="flags" src="images/flags/br.svg" alt=" Brazil's flag" width="30" height="20">
+            <img class="flags" src="images/flags/es.svg" alt="Spain's flag" width="30" height="20">
+            <img class="flags" src="images/flags/de.svg" alt="Germany's flag" width="30" height="20">
         <nav>
-            <ul>
-                <li><a href="">About</a></li>
-                <li><a href="">Portfolio</a></li>
-                <li><a href="">Resume</a></li>
-                <li><a href="">Contact</a></li>
+            <ul class="nav_links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Resume</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div>
-            <img width="200" src="images/thay2.png" alt="">
-            <h2>Front-End Developer</h2>
-            <h1>Thayna MacDolw (she/her)</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore cum ex veritatis accusamus nisi. Asperiores obcaecati ipsum tempora quidem iusto magnam consequatur vel nobis molestiae, commodi quibusdam mollitia alias doloremque!</p>
-            <button>Portfolio</button>
-            <button>Contact</button>
+        <div class="flex_container">
+            <div class="flex_left">
+                <img class="mypic" width="200" src="images/thay.png" alt="">
+            </div>
+            <div class="flex_right">
+                <h2>Front-End Developer</h2>
+                <h1>Thayna MacDolw (she/her)</h1>
+                <p class="about_front">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore cum ex veritatis accusamus nisi. Asperiores obcaecati ipsum tempora quidem iusto magnam consequatur vel nobis molestiae, commodi quibusdam mollitia alias doloremque!</p>
+                <a class="cta" href="#"><button>Portfolio</button></a>
+                <a class="cta" href="#"><button>Contact</button></a>
+            </div>
         </div>
     </main>
     <footer>
         <p class="socialfooter">Gmail</p>
         <p class="socialfooter">LinkedIn</p>
         <p class="socialfooter">Github</p>
-        <p class="copyright">Designed and coded by<a href="http://">Thayna MacDolw</a></p>
+        <p class="copyright">Designed and coded by <a class="coded" href="https://www.linkedin.com/in/thaynamacdolw/" target="_blank">Thayna MacDolw</a></p>
     </footer>
+    
 </body>
 
 </html>
