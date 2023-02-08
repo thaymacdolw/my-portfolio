@@ -24,6 +24,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-image: url(images/pexels-adrien-olichon-2387793.png);
+    position: cover;
 }
 header {
     display: flex;
@@ -71,6 +73,15 @@ nav {
 .flex_left {
     margin: 0 20px 0 20px;
     padding: 5px;
+    overflow: hidden;
+}
+.flex_left img {
+   -webkit-transition: -webkit-transform .3s ease;
+   transition: transform .3s ease;
+}
+.flex_left:hover img {
+    -webkit-transform: scale(1.1);
+   transform: scale(1.1);
 }
   
 .flex_right {
@@ -81,6 +92,9 @@ nav {
 .mypic {
     border-radius: 5px;
     
+}
+.mypic:hover {
+    background-image: 
 }
 button {
     padding: 9px 25px;
