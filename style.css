@@ -1,8 +1,9 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
 
-
-* {
+*,
+*:before
+*:after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -36,9 +37,6 @@ html,body {
     flex-direction: column;
     min-height:100vh;
 }
-header {
-    position: fixed;
-}
 section {
     display: grid;
     place-items: center;
@@ -54,36 +52,43 @@ section {
     position: fixed;
     top: 10px;
     left:0;
-    z-index: 9999;
-    transition: all 300ms ease-in-out;
+    right: 0;
+    z-index: 1;
+
 }
 #section1 {
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 }
-.nav_links {
-    list-style: none;
-}
-.nav_links li {
+
+nav li {
     display: inline-block;
     padding: 0px 20px;
 
 }
-.nav_links li a {
-    transition: all 0.3s ease 0s;
+nav li a {
+    position: relative;
     text-decoration: none;
-    color: white;
+    color: var(--tertiary-color);
     font-size: 1.3em;
-    background-color: #048d3f60;
-    padding: 9px 20px;
-    border: none;
-    border-radius: 5px;
+    padding: 0 10px;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
-    font-size: 1em;
+
+}   
+nav li a:after {
+    content: "";
+    position: absolute;
+    background-color: var(--main-color);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
 }
-.nav_links li a:hover {
-    background-color: var(--hover-button);
+nav li a:hover{
+    color: white;
+}
+nav li a:hover:after {
+    width: 100%;
 }
 
 nav {
@@ -102,6 +107,9 @@ nav {
 }
 .flex_right h1 {
     font-weight: bolder;
+}
+.flex_right > p {
+    line-height: 1.5em;
 }
 .flex_right h1, h2 {
     line-height: 1em;
@@ -128,7 +136,7 @@ nav {
 }
   
 .flex_right {
-    width: 35%;
+    width: 33%;
 }
 button {
     padding: 9px 25px;
@@ -139,15 +147,14 @@ button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
     font-size: 1em;
-    margin-top: 30px;
-    margin-right: 30px;  
+ 
 }
 
 button:hover {
     background-color: var(--hover-button);
 }
 .buttons {
-    padding-top:20px
+    padding-top:10px
     
 }
 .cta1 {
