@@ -154,11 +154,15 @@ button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
     font-size: 1em;
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: transform .2s ease;
  
 }
 
 button:hover {
     background-color: var(--hover-button);
+    -webkit-transform: scale(1.1);
+   transform: scale(1.1);
 }
 .buttons {
     padding-top:10px
@@ -188,11 +192,12 @@ button:hover {
 
 .item-projects {
     position: relative;
-    width: 31vw;
-    height: 38vh;
+    max-width: 31vw;
+    max-height: 38vh;
     margin:auto;
     -webkit-transition: -webkit-transform .3s ease;
    transition: transform .2s ease;
+   
 }
 .item-projects:hover  {
     -webkit-transform: scale(1.1);
