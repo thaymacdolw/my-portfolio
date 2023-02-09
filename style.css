@@ -95,6 +95,10 @@ nav {
     text-align: right;
     margin: 10px 10px 0 0;
 }
+span {
+    color: var(--main-color);
+    text-decoration: underline;
+}
 .about_front {
     padding: 5px;
     font-size: 1em;
