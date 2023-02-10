@@ -226,30 +226,21 @@ button:hover {
     border-radius: 0px 0px 5px 5px;
 }
 /* END PORTFOLIO STYLE */
-footer {
-    text-align: center;
-    background-color: rgb(0, 0, 0);
-    color: white;
-    opacity: 90%;
-}
-a {
-    text-decoration: none;
-    color: rgb(62, 148, 230);
-}
-a:hover {
-    color: white;
-    text-decoration: underline;
-}
+
 #section3 {
     background-color: white;
     min-height: 100vh;
     color: black;
 }
+/* Section Contact Me */
+
 #section4 {
     background-color: black;
     min-height: 100vh;
     color: white;
 }
+/*Section Contact Me - End */
+
 .title2, .title3, .title4 {
     text-align: center;
     margin: auto;
@@ -317,6 +308,8 @@ footer {
         transition: none;
     }
 }
+
+/*Sections animation */
 
 @media (max-width:767px) {
     .container-projects {

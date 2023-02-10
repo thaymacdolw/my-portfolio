@@ -21,3 +21,5 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll('.portfolio');
 hiddenElements.forEach((el) => observer.observe(el));
+
+
