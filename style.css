@@ -114,7 +114,7 @@ span {
     text-decoration: underline;
 }
 
-.about_front {
+.home_front {
     padding: 5px;
     font-size: 1em;
     font-weight: 200;
@@ -269,7 +269,7 @@ button:hover {
 
 /* END PORTFOLIO STYLE */
 
-#section3 {
+#section2 {
     background-color: white;
     min-height: 100vh;
     color: black;
@@ -288,7 +288,7 @@ button:hover {
     width: 100%;
     min-height: 100vh;
     padding: 2rem;
-    background-color: rgb(231, 230, 230);
+    background-color: black;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -308,7 +308,7 @@ button:hover {
 }
 
 .contact-form {
-    background-color: var(--main-color);
+    background-color: var(--secondary-color);
     position: relative;
 }
 
@@ -380,7 +380,7 @@ textarea.input {
     background-color: #fff;
     border: 2px solid #fafafa;
     font-size: 0.95rem;
-    color: var(--main-color);
+    color: var(--secondary-color);
     line-height: 1;
     border-radius: 25px;
     outline: none;
@@ -414,7 +414,6 @@ textarea.input {
     opacity: 0;
     transition: 0.3s;
     height: 5px;
-    background-color: var(--main-color);
     top: 50%;
     transform: translateY(-50%);
 }
@@ -446,7 +445,9 @@ textarea.input {
 }
 
 .contact-info .title {
-    color: var(--main-color);
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .text {
