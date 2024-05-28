@@ -9,10 +9,12 @@
     --color2: #9e9d9d;
     --color3: #000000;
     --color4: hsl(0, 0%, 11%);
-    --color5: #b832b8;
+    --color5: #754ef9;
     --color6: #333;
     --color7: #efefef;
-    --font-color: ;
+    --color8: #a7a6a6;
+    --color9: rgba( 0, 0, 0, .2);
+    --font-color: #333;
     --section-padding: 7rem;
     --font1: 'Poppins', sans-serif;
     --font2: 'Rubik', sans-serif;
@@ -47,8 +49,7 @@ body {
 section {
     min-height: 100vh;
     pad: 10rem 7%;
-    padding-top: 2rem 7%;
-    
+    padding-top: 2rem 7%; 
 }
 
 /* Header */
@@ -64,12 +65,16 @@ section {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: var(--color2);
+    background: var(--color2);   
+    transition: .5s; 
 }
-
+.header.sticky {
+    background-color: var(--color1);
+    box-shadow: 0 .1rem 1rem var(--color9)
+}
 .logo {
     font-size: 2.5rem;
-    color: var(--color1);
+    color: var(--color5);
     font-weight: 600;
     cursor: default;
     /* margin-right: auto; joga os outros itens de nav para direita*/
@@ -91,6 +96,12 @@ section {
     margin-right: 3.5rem;
     text-decoration: none;
 }
+.header.sticky  .navbar a {
+    color:var(--color6);
+}
+.header.sticky  .navbar a.active {
+    color: var(--color5);
+}
 
 .navbar a:last-child {
     margin-right: 0;
@@ -105,7 +116,11 @@ section {
     height: .2rem;
     background-color: var(--color1);
 }
+.header.sticky  .navbar a::before {
+    background: var(--color5);
+    opacity: 0.7;
 
+}
 /* Download Button */
 .nav-button button {
     font-weight: 500;
@@ -145,6 +160,10 @@ section {
     cursor: pointer;
     margin-left: 2rem;
 }
+.header.sticky #darkMode-icon {
+    color:var(--color5);
+    opacity: .9;
+}
 
 .header-right {
     display: flex;
@@ -169,6 +188,7 @@ section {
     font-size: 3rem;
     font-weight: 700;
     line-height: .3;
+    color: var(--color6);
 }
 
 .home-content h1 {
@@ -176,6 +196,7 @@ section {
     font-weight: 700;
     margin-bottom: .3rem;
     white-space: nowrap;
+    color: var(--color6);
 }
 .home-content h1 span{
     color: var(--color5);
@@ -226,7 +247,7 @@ section {
 
 .btn:hover {
     background: transparent;
-    color: #b832b8;
+    color: var(--color5);
     border-color: var(--color5);
 
 }
@@ -319,11 +340,13 @@ section {
 }
 
 /* About Section*/
-
+.about{
+    background: rgb(189, 141, 141);
+}
 #about {
     padding: 80px 0;
     margin-top: 7%;
-    color: var(--color3);
+    color: var(--color6);
 }
 
 .about-content .row {
