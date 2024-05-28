@@ -47,6 +47,8 @@ body {
 section {
     min-height: 100vh;
     pad: 10rem 7%;
+    padding-top: 2rem 7%;
+    
 }
 
 /* Header */
@@ -164,7 +166,7 @@ section {
 }
 
 .home-content h3 {
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 700;
     line-height: .3;
 }
@@ -175,9 +177,15 @@ section {
     margin-bottom: .3rem;
     white-space: nowrap;
 }
+.home-content h1 span{
+    color: var(--color5);
+}
+
 
 .home-content p {
     font-size: 1.8rem;
+    width: 550px;
+    text-align: justify;
 }
 
 .home-content .social-media a {
@@ -322,6 +330,7 @@ section {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding-top: 15rem;
 
 }
 
@@ -347,6 +356,9 @@ section {
 
 .about-content .about-col-2 span {
     color: var(--color5);
+}
+.about-content .about-col-2 .about-description{
+    align-items: justify;
 }
 
 .about-content .row .about-description {
