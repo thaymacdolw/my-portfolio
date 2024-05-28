@@ -65,7 +65,7 @@ section {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: var(--color2);   
+    background: var(--color8);
     transition: .5s; 
 }
 .header.sticky {
@@ -340,9 +340,7 @@ section {
 }
 
 /* About Section*/
-.about{
-    background: rgb(189, 141, 141);
-}
+
 #about {
     padding: 80px 0;
     margin-top: 7%;
@@ -443,17 +441,18 @@ section {
 }
 .tab-contents .ul-stacks li p, .tab-contents .ul-tools li p {
     margin-top: 10px;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 .tab-contents .ul-education,.tab-contents .ul-languages li, .tab-contents .ul-curiosities li {
     list-style: none;
     margin: 10px 0;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
 }
 .tab-contents .ul-education li span, .tab-contents .ul-languages li span, .tab-contents .ul-curiosities li span {
     color: var(--color5);
     font-size: 2rem;
+    font-weight: 500;
 }
 .tab-contents{
     display: none;
