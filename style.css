@@ -13,7 +13,8 @@
     --color6: #333;
     --color7: #efefef;
     --color8: #a7a6a6;
-    --color9: rgba( 0, 0, 0, .2);
+    --color9: rgba(0, 0, 0, .2);
+    --color10: #683df3;
     --font-color: #333;
     --section-padding: 7rem;
     --font1: 'Poppins', sans-serif;
@@ -51,6 +52,7 @@ section {
     pad: 10rem 7%;
     padding-top: 2rem;
 }
+
 span {
     color: var(--color5);
 }
@@ -69,12 +71,14 @@ span {
     align-items: center;
     z-index: 100;
     background: var(--color8);
-    transition: .5s; 
+    transition: .5s;
 }
+
 .header.sticky {
     background-color: var(--color1);
     box-shadow: 0 .1rem 1rem var(--color9)
 }
+
 .logo {
     font-size: 2.5rem;
     color: var(--color5);
@@ -99,10 +103,12 @@ span {
     margin-right: 3.5rem;
     text-decoration: none;
 }
-.header.sticky  .navbar a {
-    color:var(--color6);
+
+.header.sticky .navbar a {
+    color: var(--color6);
 }
-.header.sticky  .navbar a.active {
+
+.header.sticky .navbar a.active {
     color: var(--color5);
 }
 
@@ -119,11 +125,13 @@ span {
     height: .2rem;
     background-color: var(--color1);
 }
-.header.sticky  .navbar a::before {
+
+.header.sticky .navbar a::before {
     background: var(--color5);
     opacity: 0.7;
 
 }
+
 /* Download Button */
 .nav-button button {
     font-weight: 500;
@@ -163,8 +171,9 @@ span {
     cursor: pointer;
     margin-left: 2rem;
 }
+
 .header.sticky #darkMode-icon {
-    color:var(--color5);
+    color: var(--color5);
     opacity: .9;
 }
 
@@ -174,7 +183,7 @@ span {
 }
 
 
-/* Home Section*/
+/*---------------Home Section---------------*/
 
 .home {
     display: flex;
@@ -201,7 +210,8 @@ span {
     white-space: nowrap;
     color: var(--color6);
 }
-.home-content h1 span{
+
+.home-content h1 span {
     color: var(--color5);
 }
 
@@ -259,7 +269,7 @@ span {
     margin-left: 1rem;
 }
 
-/* Profession Segment */
+/*-----------Stacks Segment--------------*/
 .home .techs-container {
     position: absolute;
     top: 0;
@@ -342,7 +352,7 @@ span {
     transform: scaleX(-1);
 }
 
-/* About Section*/
+/*------------About Section---------------*/
 
 #about {
     padding: 80px 0;
@@ -381,7 +391,8 @@ span {
 .about-content .about-col-2 span {
     color: var(--color5);
 }
-.about-content .about-col-2 .about-description{
+
+.about-content .about-col-2 .about-description {
     align-items: justify;
 }
 
@@ -423,7 +434,8 @@ span {
     height: auto;
 }
 
-.tab-contents .ul-stacks, .tab-contents .ul-tools {
+.tab-contents .ul-stacks,
+.tab-contents .ul-tools {
     display: flex;
     flex-wrap: wrap;
     flex: 1 1 calc(20% - 10px);
@@ -431,7 +443,8 @@ span {
     margin: 0;
 }
 
-.tab-contents .ul-stacks li, .tab-contents .ul-tools li {
+.tab-contents .ul-stacks li,
+.tab-contents .ul-tools li {
     list-style: none;
     margin-right: 10px;
     flex: 1 1 calc(20% - 10px);
@@ -442,34 +455,45 @@ span {
     align-items: center;
     cursor: pointer;
 }
-.tab-contents .ul-stacks li p, .tab-contents .ul-tools li p {
+
+.tab-contents .ul-stacks li p,
+.tab-contents .ul-tools li p {
     margin-top: 10px;
     font-size: 1.5rem;
     font-weight: 600;
 }
-.tab-contents .ul-education,.tab-contents .ul-languages li, .tab-contents .ul-curiosities li {
+
+.tab-contents .ul-education,
+.tab-contents .ul-languages li,
+.tab-contents .ul-curiosities li {
     list-style: none;
     margin: 10px 0;
     font-size: 1.7rem;
 }
-.tab-contents .ul-education li span, .tab-contents .ul-languages li span, .tab-contents .ul-curiosities li span {
+
+.tab-contents .ul-education li span,
+.tab-contents .ul-languages li span,
+.tab-contents .ul-curiosities li span {
     color: var(--color5);
     font-size: 2rem;
     font-weight: 500;
 }
-.tab-contents{
+
+.tab-contents {
     display: none;
 }
+
 .tab-contents.active-tab {
     display: block;
 }
 
-/* Projects Design */
+/*--------Projects Design-----------*/
 
 .portfolio {
     padding-bottom: 10rem;
     padding: 2rem;
 }
+
 .portfolio h2 {
     margin-top: 6.59rem;
     padding: 2rem 0 1rem;
@@ -478,14 +502,16 @@ span {
     display: flex;
     justify-content: center;
 }
+
 .portfolio .portfolio-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 2.5rem;
-    justify-content: space-between; 
+    justify-content: space-between;
     padding: 0 2rem;
 }
+
 .portfolio-container .portfolio-box {
     position: relative;
     border-radius: 2rem;
@@ -493,15 +519,18 @@ span {
     overflow: hidden;
     width: 89%;
     height: 90%;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
+
 .portfolio-box img {
     width: 100%;
     transition: .5s ease;
 }
-.portfolio-box:hover img{
+
+.portfolio-box:hover img {
     transform: scale(1.1);
 }
+
 .portfolio-box .portfolio-layer {
     position: absolute;
     bottom: 0;
@@ -519,16 +548,20 @@ span {
     opacity: 0;
     transition: .5s ease;
 }
-.portfolio-box:hover .portfolio-layer{
+
+.portfolio-box:hover .portfolio-layer {
     opacity: 1;
 }
+
 .portfolio-layer h4 {
-    font-size:  3rem;
+    font-size: 3rem;
 }
+
 .portfolio-layer p {
     font-size: 1.6rem;
     margin: .3rem 0 1rem;
 }
+
 .portfolio-layer a {
     display: inline-flex;
     justify-content: center;
@@ -539,11 +572,216 @@ span {
     border-radius: 50%;
     margin: 0 2rem;
 }
+
 .portfolio-layer a i {
     font-size: 2.5rem;
-    color: var(--color6);  
+    color: var(--color6);
 }
 
-/*Contact Section Design*/
+/*--------Contact Section Design----------*/
 
+.contact {
+    min-height: 100vh;
+    padding-top: 10rem;
+    display: flex;
+    align-items: center;
+}
 
+.contact-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    padding: 40px;
+    display: flex;
+    gap: 80px;
+    border-radius: 10px;
+    background: var(--color1);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+}
+
+.contact-left {
+    width: 55%;
+}
+
+.contact-heading {
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color6);
+}
+
+.contact-text {
+    font-size: 1.8rem;
+    color: var(--color6);
+    margin-top: 10px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.inputBox {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.inputBox input,
+.inputBox textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: var(--color7);
+}
+
+.inputBox input::placeholder,
+.inputBox textarea::placeholder {
+    color: var(--color6);
+    opacity: 0.5;
+    font-size: 1.5rem;
+}
+
+.inputBox.error input,
+.inputBox.error textarea {
+    border-bottom: 1px solid red;
+}
+
+.inputBox:not(.error) input:focus,
+.inputBox:not(.error) textarea:focus {
+    border-bottom: 1px solid var(--color5);
+}
+.inputBox textarea {
+    resize: none;
+    height: 150px;
+}
+.inputBox .err-msg{
+    font-size: 1rem;
+    color: red;
+}
+
+.btn-contact {
+    width: 100%;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: 600;
+    border: none;
+    color: var(--color1);
+    background-color: var(--color5);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btn-contact:hover {
+    background: transparent;
+    color: var(--color5);
+    border: .2rem solid var(--color5);
+}
+
+.contact-right {
+    width: 45%;
+}
+
+.contact-photo {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.contact-photo img {
+    width: 105%;
+    margin: auto;
+    margin-left: -15px;
+
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.infoBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.infoBox .icons {
+    font-size: 2.4rem;
+    color: var(--color5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 50%;
+    border: .2rem solid var(--color10);
+}
+
+.icon-text {
+    margin: 0;
+}
+
+.icon-text a {
+    text-decoration: none;
+    color: var(--color6);
+    font-size: 1.3rem;
+}
+
+.social-icons {
+    position: absolute;
+    right: -50px;
+    bottom: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    font-size: 25px;
+    align-items: center;
+    border-bottom-right-radius: 30px;
+    color: var(--color1);
+    background-color: var(--color5);
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: var(--color1)
+}
+
+/*--------Footer Design---------*/
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1.8rem 7%;
+    background: var(--color5);
+}
+.footer-text a{
+    font-size: 1.6rem;
+    color: var(--color1);
+    text-decoration: none;
+}
+.footer-text a:hover {
+    text-decoration: underline;
+}
+.footer-iconTop a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    background: var(--color1);
+    border-radius: .8rem;
+    border: 0.2rem solid var(--color5);
+    outline: .2rem solid transparent;
+    transition: .5 ease;
+}
+.footer-iconTop a:hover {
+    outline-color: var(--color1);
+}
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--color6);
+}
