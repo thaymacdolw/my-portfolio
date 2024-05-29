@@ -21,6 +21,16 @@
     --font2: 'Rubik', sans-serif;
 }
 
+.dark-mode {
+    --color7: #0b061f;
+    --color5: #754ef9;
+    --color6: #efefef;
+
+
+
+
+}
+
 /* General settings */
 
 * {
@@ -293,11 +303,44 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: techsRotate 20s ease-in-out infinite
+}
+
+@keyframes techsRotate {
+
+    0%,
+    20% {
+        transform: rotate(0deg);
+    }
+
+    20%,
+    40% {
+        transform: rotate(-72deg);
+    }
+
+    40%,
+    60% {
+        transform: rotate(-144deg);
+    }
+
+    60%,
+    80% {
+        transform: rotate(-216deg);
+    }
+
+    80%,
+    100% {
+        transform: rotate(-288deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
 }
 
 .home .techs-box .techs {
     position: absolute;
-    left: 3rem;
+    left: 1rem;
     display: flex;
     color: var(--color5);
     transform: rotate(calc(360deg / 5 * var(--i)));
@@ -385,7 +428,8 @@ span {
 
 .about-content .row .subtitle-about {
     font-size: 5rem;
-    font-weight: 600;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .about-content .about-col-2 span {
@@ -584,6 +628,7 @@ span {
     min-height: 100vh;
     padding-top: 10rem;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -593,6 +638,7 @@ span {
     max-width: 900px;
     padding: 40px;
     display: flex;
+    margin: 0;
     gap: 80px;
     border-radius: 10px;
     background: var(--color1);
@@ -650,11 +696,13 @@ form {
 .inputBox:not(.error) textarea:focus {
     border-bottom: 1px solid var(--color5);
 }
+
 .inputBox textarea {
     resize: none;
     height: 150px;
 }
-.inputBox .err-msg{
+
+.inputBox .err-msg {
     font-size: 1rem;
     color: red;
 }
@@ -669,13 +717,14 @@ form {
     background-color: var(--color5);
     border-radius: 10px;
     cursor: pointer;
-    transition: 0.5s;
+    transition: .5s ease;
 }
 
 .btn-contact:hover {
     background: transparent;
     color: var(--color5);
     border: .2rem solid var(--color5);
+    
 }
 
 .contact-right {
@@ -759,29 +808,48 @@ form {
     padding: 1.8rem 7%;
     background: var(--color5);
 }
-.footer-text a{
+
+.footer-text a {
     font-size: 1.6rem;
     color: var(--color1);
     text-decoration: none;
 }
+
 .footer-text a:hover {
     text-decoration: underline;
 }
-.footer-iconTop a {
+
+.top-link {
+    position: fixed;
     display: inline-flex;
     justify-content: center;
+    bottom: .5rem;
+    right: 1rem;
     align-items: center;
     padding: 0.8rem;
     background: var(--color1);
-    border-radius: .8rem;
+    border-radius: 50%;
     border: 0.2rem solid var(--color5);
     outline: .2rem solid transparent;
-    transition: .5 ease;
+    transition: all .25s ease-in-out;
+    z-index: 1000;
 }
-.footer-iconTop a:hover {
+
+.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.top-link:hover {
     outline-color: var(--color1);
 }
-.footer-iconTop a i {
-    font-size: 2.4rem;
+
+.top-link i {
+    font-size: 2.9rem;
     color: var(--color6);
 }
