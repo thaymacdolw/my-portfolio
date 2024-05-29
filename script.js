@@ -23,7 +23,45 @@ window.onscroll = () => {
 
     header.classList.toggle('sticky', window.scrollY > 100);
 };
+//------------------scroll-behavior: smooth--------------------------------
 
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+//--------------CV DOWNLOAD--------------------
+document.getElementById('downloadButton').addEventListener('click', function() {
+    fetch('url_do_seu_arquivo_pdf')
+      .then(response => response.blob())
+      .then(pdfBlob => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const pdfString = reader.result;
+          
+          // Crie um objeto do tipo Blob com o conteúdo do PDF
+          var pdfBlob = new Blob([pdfString], { type: 'application/pdf' });
+          
+          // Crie um link temporário para o PDF
+          var link = document.createElement('a');
+          link.href = window.URL.createObjectURL(pdfBlob);
+          link.download = 'seu_arquivo.pdf'; // Nome do arquivo que será baixado
+    
+          // Adicione o link ao DOM e clique nele para iniciar o download
+          document.body.appendChild(link);
+          link.click();
+    
+          // Limpeza dos recursos
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(link.href);
+        };
+        reader.readAsDataURL(pdfBlob);
+      });
+});
 //-------OnClick feature on About Section-----------
 
 var tablinks = document.getElementsByClassName("tab-links");
@@ -178,3 +216,4 @@ ScrollReveal({
 ScrollReveal().reveal('.home-content, .heading, .subtitle-about', { origin: 'top' });
 ScrollReveal().reveal('.home-img img,.ul-stacks,.portfolio-box,.contact-container', { origin: 'bottom' });
 ScrollReveal().reveal('.about-col-1', { origin: 'left' });
+
