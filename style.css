@@ -49,7 +49,10 @@ body {
 section {
     min-height: 100vh;
     pad: 10rem 7%;
-    padding-top: 2rem 7%; 
+    padding-top: 2rem;
+}
+span {
+    color: var(--color5);
 }
 
 /* Header */
@@ -58,7 +61,7 @@ section {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 7%;
+    padding: 2rem;
     background: transparent;
     transition: 0.3s;
     display: flex;
@@ -460,3 +463,87 @@ section {
 .tab-contents.active-tab {
     display: block;
 }
+
+/* Projects Design */
+
+.portfolio {
+    padding-bottom: 10rem;
+    padding: 2rem;
+}
+.portfolio h2 {
+    margin-top: 6.59rem;
+    padding: 2rem 0 1rem;
+    font-size: 5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+.portfolio .portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+    justify-content: space-between; 
+    padding: 0 2rem;
+}
+.portfolio-container .portfolio-box {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+    overflow: hidden;
+    width: 89%;
+    height: 90%;
+    margin: 0 auto; 
+}
+.portfolio-box img {
+    width: 100%;
+    transition: .5s ease;
+}
+.portfolio-box:hover img{
+    transform: scale(1.1);
+}
+.portfolio-box .portfolio-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, .1), var(--color5));
+    color: var(--color1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 4rem;
+    opacity: 0;
+    transition: .5s ease;
+}
+.portfolio-box:hover .portfolio-layer{
+    opacity: 1;
+}
+.portfolio-layer h4 {
+    font-size:  3rem;
+}
+.portfolio-layer p {
+    font-size: 1.6rem;
+    margin: .3rem 0 1rem;
+}
+.portfolio-layer a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    background: var(--color1);
+    border-radius: 50%;
+    margin: 0 2rem;
+}
+.portfolio-layer a i {
+    font-size: 2.5rem;
+    color: var(--color6);  
+}
+
+/*Contact Section Design*/
+
+
