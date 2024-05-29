@@ -17,7 +17,7 @@ window.onscroll = () => {
         };
     });
 
-    //---------Sticky Navbar------------
+//---------Sticky Navbar------------
 
     let header = document.querySelector('.header');
 
@@ -35,32 +35,27 @@ document.querySelectorAll('nav a').forEach(anchor => {
 });
 
 //--------------CV DOWNLOAD--------------------
-document.getElementById('downloadButton').addEventListener('click', function() {
-    fetch('url_do_seu_arquivo_pdf')
-      .then(response => response.blob())
-      .then(pdfBlob => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const pdfString = reader.result;
-          
-          // Crie um objeto do tipo Blob com o conteúdo do PDF
-          var pdfBlob = new Blob([pdfString], { type: 'application/pdf' });
-          
-          // Crie um link temporário para o PDF
-          var link = document.createElement('a');
-          link.href = window.URL.createObjectURL(pdfBlob);
-          link.download = 'seu_arquivo.pdf'; // Nome do arquivo que será baixado
-    
-          // Adicione o link ao DOM e clique nele para iniciar o download
-          document.body.appendChild(link);
-          link.click();
-    
-          // Limpeza dos recursos
-          document.body.removeChild(link);
-          window.URL.revokeObjectURL(link.href);
-        };
-        reader.readAsDataURL(pdfBlob);
-      });
+document.getElementById('downloadButton').addEventListener('click', function () {
+    // URL do arquivo PDF no GitHub
+    var pdfUrl = 'https://raw.githack.com/thaymacdolw/my-portfolio/main/assets/cvthay.pdf';
+
+    // Fetch para obter o PDF
+    fetch(pdfUrl)
+        .then(response => response.blob())
+        .then(pdfBlob => {
+            // Cria um link temporário para o PDF
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(pdfBlob);
+            link.download = 'ThaynaMacDolwCV.pdf'; // Nome do arquivo que será baixado
+
+            // Adiciona o link ao DOM e clica nele para iniciar o download
+            document.body.appendChild(link);
+            link.click();
+
+            // Limpeza dos recursos
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(link.href);
+        });
 });
 //-------OnClick feature on About Section-----------
 
