@@ -5,30 +5,56 @@
 /*Website themes */
 
 :root {
-    --color1: #FFFFFF;
-    --color2: #9e9d9d;
-    --color3: #000000;
-    --color4: hsl(0, 0%, 11%);
-    --color5: #754ef9;
-    --color6: #333;
-    --color7: #efefef;
-    --color8: #a7a6a6;
-    --color9: rgba(0, 0, 0, .2);
-    --color10: #683df3;
-    --font-color: #333;
-    --section-padding: 7rem;
     --font1: 'Poppins', sans-serif;
     --font2: 'Rubik', sans-serif;
+    --font-color: #333;
+    --color1: #5a618b;
+    --color2: #adb1f4;
+    --color3:#2f3960;
+    --color4:#f5f7ff;
+    --color5:#b1b2e3;
+    --color6:#8c93e9;
+    --color7:#2f3960;
+    --color8:#b1b2e3;
+    --color9:#2f3960;
+    --color10:#f5f7ff;
+    --color11:#f5f7ff;
+    --color12:#2f3960;
+    --color13:#8c93e9;
+    --color14:#f5f7ff;
+    --color15:rgb(248, 95, 95);
+    --color16:#8c93e9;
+    --shadow:rgba(0, 0, 0, .2);
+    --branco:#FFFFFF;
+    --preto: #000000;
+    --background:#f9f9f9;
 }
 
 .dark-mode {
-    --color7: #0b061f;
-    --color5: #754ef9;
-    --color6: #efefef;
-
-
-
-
+    --font-color:#f5f7ff;
+    --color1: #5a618b;
+    --color2: #adb1f4;
+    --color3:#adb1f4;
+    --color4:#041034;
+    --color5:#b1b2e3;
+    --color6:#8c93e9;
+    --color7:#f5f7ff;
+    --color8:#202742;
+    --color9:#f5f7ff;
+    --color10:#adb1f4;
+    --color11:#f5f7ff;
+    --color12:#f5f7ff;
+    --color13:#2f3960;
+    --color14:#2f3960;
+    --color15:rgb(201, 0, 0);
+    --color16:#041034;
+    --shadow:rgba(0, 0, 0, .2);
+    --branco:#FFFFFF;
+    --preto: #000000;
+    --background:#f9f9f9;
+}
+span.dark-mode {
+    color: red;
 }
 
 /* General settings */
@@ -53,20 +79,18 @@ html {
 }
 
 body {
-    background: var(--color7);
-    color: var(--color4);
+    background: var(--color4);
 }
-
+span {
+    color: var(--color2);
+}
 /* Sections */
 section {
     min-height: 100vh;
     pad: 10rem 7%;
     padding-top: 2rem;
-}
+}   
 
-span {
-    color: var(--color5);
-}
 
 /* Header */
 .header {
@@ -81,18 +105,18 @@ span {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: var(--color8);
+    background: transparent;
     transition: .5s;
 }
 
 .header.sticky {
-    background-color: var(--color1);
-    box-shadow: 0 .1rem 1rem var(--color9)
+    background-color: var(--color8);
+    box-shadow: 0 .1rem 1rem var(--shadow)
 }
 
 .logo {
     font-size: 2.5rem;
-    color: var(--color5);
+    color: var(--color3);
     font-weight: 600;
     cursor: default;
     /* margin-right: auto; joga os outros itens de nav para direita*/
@@ -100,27 +124,28 @@ span {
 
 .navbar {
     display: flex;
-    justify-content: center;
+    justify-content:flex-end;
     align-items: center;
+    margin-right: 10rem;
     flex: 1;
 
 }
 
 .navbar a {
     position: relative;
-    font-size: 1.7rem;
-    color: var(--color1);
+    font-size: 2rem;
+    color: var(--color4);
     font-weight: 500;
     margin-right: 3.5rem;
     text-decoration: none;
 }
 
 .header.sticky .navbar a {
-    color: var(--color6);
+    color: var(--color9);
 }
 
 .header.sticky .navbar a.active {
-    color: var(--color5);
+    color: var(--color10);
 }
 
 .navbar a:last-child {
@@ -134,20 +159,21 @@ span {
     bottom: -6px;
     width: 100%;
     height: .2rem;
-    background-color: var(--color1);
+    background-color: var(--color4);
 }
 
 .header.sticky .navbar a::before {
-    background: var(--color5);
+    background: var(--color10);
     opacity: 0.7;
 
 }
 
 /* Download Button */
 .nav-button button {
-    font-weight: 500;
+    font-weight: 600;
     padding: 12px 20px;
-    background: var(--color7);
+    background: var(--color4);
+    color: var(--color7);
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -161,30 +187,30 @@ span {
     margin-left: 10px;
     font-size: 16px;
     transition: 0.4s ease;
-
+    color: var(--color12);
+    font-weight: 600;
 }
 
 .nav-button button:hover {
-    background: var(--color2);
-    color: var(--color1);
+    background: var(--color1);
+    color: var(--color11);
 
 }
 
 .nav-button button:hover i {
-    color: var(--color1);
-
+    color: var(--color12);
 }
 
 /*Dark Mode Icon */
 #darkMode-icon {
     font-size: 2.4rem;
-    color: var(--color1);
+    color: var(--color4);
     cursor: pointer;
     margin-left: 2rem;
 }
 
 .header.sticky #darkMode-icon {
-    color: var(--color5);
+    color: var(--color3);
     opacity: .9;
 }
 
@@ -211,7 +237,7 @@ span {
     font-size: 3rem;
     font-weight: 700;
     line-height: .3;
-    color: var(--color6);
+    color: var(--font-color);
 }
 
 .home-content h1 {
@@ -219,11 +245,11 @@ span {
     font-weight: 700;
     margin-bottom: .3rem;
     white-space: nowrap;
-    color: var(--color6);
+    color: var(--font-color);
 }
 
 .home-content h1 span {
-    color: var(--color5);
+    color: var(--color6);
 }
 
 
@@ -231,6 +257,7 @@ span {
     font-size: 1.8rem;
     width: 550px;
     text-align: justify;
+    color: var(--font-color);
 }
 
 .home-content .social-media a {
@@ -240,29 +267,29 @@ span {
     width: 4rem;
     height: 4rem;
     background: transparent;
-    border: .2rem solid var(--color5);
+    border: .2rem solid var(--color6);
     border-radius: 50%;
-    box-shadow: 0 .2rem .5rem var(--color2);
+    box-shadow: 0 .2rem .5rem var(--shadow);
     font-size: 2rem;
-    color: var(--color5);
+    color: var(--color6);
     margin: 2.5rem 1.5rem 3rem 0;
     transition: .5s ease;
 }
 
 .home-content .social-media a:hover {
-    background: var(--color5);
-    color: var(--color1);
+    background: var(--color6);
+    color: var(--color4);
 }
 
 .btn {
     display: inline-block;
     padding: 1.2rem 2.8rem;
-    background: var(--color5);
+    background: var(--color6);
     margin-right: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 .2rem .5rem var(--color2);
+    box-shadow: 0 .2rem .5rem var(--shadow);
     font-size: 1.6rem;
-    color: var(--color1);
+    color: var(--color4);
     letter-spacing: .1rem;
     font-weight: 600;
     border: .2rem solid transparent;
@@ -271,8 +298,8 @@ span {
 
 .btn:hover {
     background: transparent;
-    color: var(--color5);
-    border-color: var(--color5);
+    color: var(--color6);
+    border-color: var(--color6);
 
 }
 
@@ -343,10 +370,10 @@ span {
     position: absolute;
     left: 1rem;
     display: flex;
-    color: var(--color5);
+    color: var(--color3);
     transform: rotate(calc(360deg / 5 * var(--i)));
     transform-origin: 450px;
-    background: var(--color7);
+    background: var(--color4);
     padding: 13px 0
 }
 
@@ -367,7 +394,7 @@ span {
 .home .techs-box .circle {
     width: 72.91%;
     height: 72.91%;
-    border: 3px solid var(--color5);
+    border: 3px solid var(--color3);
     border-radius: 50%;
     position: absolute;
     display: flex;
@@ -382,8 +409,8 @@ span {
     bottom: 0;
     right: 0;
     width: 100%;
-    height: 95%;
-    background: var(--color5);
+    height: 100%;
+    background: var(--color3);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 50% 50%);
 }
 
@@ -401,9 +428,14 @@ span {
 #about {
     padding: 80px 0;
     margin-top: 7%;
-    color: var(--color6);
+    color: var(--font-color);
 }
-
+.about-content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
 .about-content .row {
     display: flex;
     justify-content: center;
@@ -411,15 +443,51 @@ span {
     padding-top: 15rem;
 
 }
+.about-content .row .about-col-1 button {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin-top: 15px;
+    background: var(--color6);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.4s, color 0.4s;
+    transition: 0.4s ease;
+    color: var(--color4);
+}
 
+.about-content .row button i {
+    transition: 0.1s ease;
+    margin-left: 10px;
+    font-size: 1.5rem;  
+}
+
+.about-content .row button:hover {
+    background: var(--color1);
+    color: var(--color11);
+
+}
+
+.nav-button button:hover i {
+    color: var(--color4);
+
+}
 .about-content .row .about-col-1 {
     flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .about-content .row .about-col-1 img {
     border-radius: 15px;
     max-width: 100%;
     height: auto;
+}
+.about-content .row .about-col-1 button{
+    width: 170px;
 }
 
 .about-content .about-col-2 {
@@ -434,7 +502,7 @@ span {
 }
 
 .about-content .about-col-2 span {
-    color: var(--color5);
+    color: var(--color6);
 }
 
 .about-content .about-col-2 .about-description {
@@ -462,7 +530,7 @@ span {
     content: '';
     width: 0;
     height: 3px;
-    background: var(--color5);
+    background: var(--color6);
     position: absolute;
     left: 0;
     bottom: -5px;
@@ -519,7 +587,7 @@ span {
 .tab-contents .ul-education li span,
 .tab-contents .ul-languages li span,
 .tab-contents .ul-curiosities li span {
-    color: var(--color5);
+    color: var(--color6);
     font-size: 2rem;
     font-weight: 500;
 }
@@ -546,8 +614,11 @@ span {
     font-weight: 600;
     display: flex;
     justify-content: center;
+    color: var(--font-color);
 }
-
+.portfolio h2 span{
+    margin-left: 1rem;
+}
 .portfolio .portfolio-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -582,8 +653,8 @@ span {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, .1), var(--color5));
-    color: var(--color1);
+    background: linear-gradient(rgba(0, 0, 0, .1), var(--color6));
+    color: var(--color4);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -600,11 +671,13 @@ span {
 
 .portfolio-layer h4 {
     font-size: 3rem;
+    color: var(--color11);
 }
 
 .portfolio-layer p {
     font-size: 1.6rem;
     margin: .3rem 0 1rem;
+    color: var(--color11);
 }
 
 .portfolio-layer a {
@@ -613,14 +686,14 @@ span {
     align-items: center;
     width: 5rem;
     height: 5rem;
-    background: var(--color1);
+    background: var(--color4);
     border-radius: 50%;
     margin: 0 2rem;
 }
 
 .portfolio-layer a i {
     font-size: 2.5rem;
-    color: var(--color6);
+    color: var(--font-color);
 }
 
 /*--------Contact Section Design----------*/
@@ -642,26 +715,30 @@ span {
     margin: 0;
     gap: 80px;
     border-radius: 10px;
-    background: var(--color1);
+    background: var(--color3);
     box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
 }
 
 .contact-left {
     width: 55%;
 }
+.contact-left span {
+    color: var(--color13);
+}
 
 .contact-heading {
     font-size: 5rem;
     font-weight: 600;
     line-height: 1;
-    color: var(--color6);
+    color: var(--color4);
 }
 
 .contact-text {
     font-size: 1.8rem;
-    color: var(--color6);
+    color: var(--color4);
     margin-top: 10px;
 }
+
 
 form {
     margin-top: 20px;
@@ -678,24 +755,24 @@ form {
     padding: 10px;
     border-radius: 5px;
     outline: none;
-    background-color: var(--color7);
+    background-color: var(--color14);
 }
 
 .inputBox input::placeholder,
 .inputBox textarea::placeholder {
-    color: var(--color6);
-    opacity: 0.5;
+    color: var(--font-color);
+    opacity: 0.7;
     font-size: 1.5rem;
 }
 
 .inputBox.error input,
 .inputBox.error textarea {
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid var(--color15);
 }
 
 .inputBox:not(.error) input:focus,
 .inputBox:not(.error) textarea:focus {
-    border-bottom: 1px solid var(--color5);
+    border-bottom: 1px solid var(--color3);
 }
 
 .inputBox textarea {
@@ -705,7 +782,7 @@ form {
 
 .inputBox .err-msg {
     font-size: 1rem;
-    color: red;
+    color: var(--color15);
 }
 
 .btn-contact {
@@ -714,8 +791,8 @@ form {
     padding: 10px 20px;
     font-weight: 600;
     border: none;
-    color: var(--color1);
-    background-color: var(--color5);
+    color: var(--color4);
+    background-color: var(--color6);
     border-radius: 10px;
     cursor: pointer;
     transition: .5s ease;
@@ -723,8 +800,8 @@ form {
 
 .btn-contact:hover {
     background: transparent;
-    color: var(--color5);
-    border: .2rem solid var(--color5);
+    color: var(--color4);
+    border: .2rem solid var(--color4);
     
 }
 
@@ -760,13 +837,13 @@ form {
 
 .infoBox .icons {
     font-size: 2.4rem;
-    color: var(--color5);
+    color: var(--color16);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 3px;
     border-radius: 50%;
-    border: .2rem solid var(--color10);
+    border: .2rem solid var(--color16);
 }
 
 .icon-text {
@@ -775,7 +852,7 @@ form {
 
 .icon-text a {
     text-decoration: none;
-    color: var(--color6);
+    color: var(--color4);
     font-size: 1.3rem;
 }
 
@@ -791,13 +868,13 @@ form {
     font-size: 25px;
     align-items: center;
     border-bottom-right-radius: 30px;
-    color: var(--color1);
-    background-color: var(--color5);
+    color: var(--color4);
+    background-color: var(--color3);
 }
 
 .social-icons a {
     text-decoration: none;
-    color: var(--color1)
+    color: var(--color4)
 }
 
 /*--------Footer Design---------*/
@@ -807,17 +884,18 @@ form {
     align-items: center;
     flex-wrap: wrap;
     padding: 1.8rem 7%;
-    background: var(--color5);
+    background: var(--color3);
 }
 
 .footer-text a {
     font-size: 1.6rem;
-    color: var(--color1);
+    color: var(--color4);
     text-decoration: none;
 }
 
 .footer-text a:hover {
     text-decoration: underline;
+    color: var(--color6);
 }
 
 .top-link {
@@ -828,9 +906,9 @@ form {
     right: 1rem;
     align-items: center;
     padding: 0.8rem;
-    background: var(--color1);
+    background: var(--color4);
     border-radius: 50%;
-    border: 0.2rem solid var(--color5);
+    border: 0.3rem solid var(--color6);
     outline: .2rem solid transparent;
     transition: all .25s ease-in-out;
     z-index: 1000;
@@ -847,7 +925,7 @@ form {
 }
 
 .top-link:hover {
-    outline-color: var(--color1);
+    outline-color: var(--color4);
 }
 
 .top-link i {
