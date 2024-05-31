@@ -1,30 +1,23 @@
 // -------------- Pop-out Modal ----------------------
-//=====Close modal ========
 document.addEventListener('DOMContentLoaded', () => {
-    const openBtn = document.getElementById('open-modal');
-    const modalContainer = document.getElementById('modal-container');
-    const closeModal = document.getElementById('close-modal');
+    const openButtons = document.querySelectorAll('.open-modal');
+    const closeButtons = document.querySelectorAll('.modal_close');
+    const modalContainers = document.querySelectorAll('.modal_container');
 
-    if (openBtn && modalContainer) {
-        openBtn.addEventListener('click', () => {
-            console.log('Botão de abrir modal clicado');
-            modalContainer.classList.add('show-modal');
+    openButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modalId = button.dataset.modalId;
+            const modal = document.getElementById(modalId);
+            modalContainers.forEach(container => container.style.display = 'none'); // Oculta todos os modais antes de abrir um novo
+            modal.style.display = 'block'; // Exibe o modal específico
         });
-    }
+    });
 
-    if (closeModal && modalContainer) {
-        closeModal.addEventListener('click', () => {
-            console.log('Botão de fechar modal clicado');
-            modalContainer.classList.remove('show-modal');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal_container');
+            modal.style.display = 'none'; // Oculta o modal específico
         });
-    }
-
-
-    // Close modal when clicking outside the modal content
-    window.addEventListener('click', (e) => {
-        if (e.target === modalContainer) {
-            modalContainer.classList.remove('show-modal');
-        }
     });
 });
 //-------------scroll sections active link ---------
