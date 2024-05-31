@@ -680,7 +680,7 @@ section {
     color: var(--color11);
 }
 
-.portfolio-layer a {
+.portfolio-layer button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -691,10 +691,82 @@ section {
     margin: 0 2rem;
 }
 
-.portfolio-layer a i {
+.portfolio-layer button i {
     font-size: 2.5rem;
     color: var(--font-color);
 }
+/* -----------Portfolio Section: Popout Modal ---------------*/
+
+.modal_container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    width: 70%;
+    max-width: 700px; 
+    border-radius: 10px;
+    padding: 20px;
+    overflow: hidden;
+    text-align: center;
+    transition:  all .3s;
+    z-index: 99999;
+    background-color: var(--color4);
+}
+
+.modal_content {
+    background-color: var(--color4);
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-radius: 10px;
+    transition: all .3s;
+    
+}
+.modal_img{
+    width: 500px;
+    margin-bottom: 0.75rem;
+}
+.modal_close{
+    display: inline-flex;
+    background-color: var(--color13);
+    border-radius: 0.5rem;
+    color: var(--font-color);
+    font-size:3rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+}
+.modal_title{
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--color16);
+}
+.modal_description{
+    font-size:1.5rem;    
+}
+ .modal_button-source{
+    padding:10px 20px ;
+    color: white;
+}
+.modal_button-live{
+    display: block;
+    margin: 1rem auto 0;
+    padding:10px 20px ;
+    color: white;
+}
+.modal_button {
+    display: inline-block;
+    background-color: var(--color2);
+    color: var(--font-color);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.modal_button:hover {
+    background-color: var(--color1);
+}
+
+
 
 /*--------Contact Section Design----------*/
 
@@ -836,14 +908,16 @@ form {
 }
 
 .infoBox .icons {
-    font-size: 2.4rem;
+    font-size: 3rem;
     color: var(--color16);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 3px;
     border-radius: 50%;
-    border: .2rem solid var(--color16);
+}
+.infoBox .icons #whatsapp {
+    font-size: 3.5rem;
 }
 
 .icon-text {

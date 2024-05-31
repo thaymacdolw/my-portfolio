@@ -1,3 +1,25 @@
+// -------------- Pop-out Modal ----------------------
+document.addEventListener('DOMContentLoaded', () => {
+    const openButtons = document.querySelectorAll('.open-modal');
+    const closeButtons = document.querySelectorAll('.modal_close');
+    const modalContainers = document.querySelectorAll('.modal_container');
+
+    openButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modalId = button.dataset.modalId;
+            const modal = document.getElementById(modalId);
+            modalContainers.forEach(container => container.style.display = 'none'); // Oculta todos os modais antes de abrir um novo
+            modal.style.display = 'block'; // Exibe o modal específico
+        });
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal_container');
+            modal.style.display = 'none'; // Oculta o modal específico
+        });
+    });
+});
 //-------------scroll sections active link ---------
 let sections = document.querySelectorAll("section");
 let navLinks = document.querySelectorAll("header nav a");
@@ -211,4 +233,18 @@ ScrollReveal({
 ScrollReveal().reveal('.home-content, .heading, .subtitle-about', { origin: 'top' });
 ScrollReveal().reveal('.home-img img,.ul-stacks,.portfolio-box,.contact-container', { origin: 'bottom' });
 ScrollReveal().reveal('.about-col-1', { origin: 'left' });
+
+// ------------------------Pop-out Modal ------------------
+//======Show modal =======
+/*const showModal = (openButton, modalContent) =>{
+    const openBtn = document.getElementById(openButton),
+    modalContainer = document.getElementById(modalContent)
+
+    if(openBtn && modalContainer){
+        openBtn.addEventListener( 'click', () =>{
+            modalContainer.classList.add('show-modal')
+        })
+    }
+}
+showModal('open-modal','modal-container')*/
 
