@@ -680,7 +680,7 @@ section {
     color: var(--color11);
 }
 
-.portfolio-layer a {
+.portfolio-layer button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -691,10 +691,89 @@ section {
     margin: 0 2rem;
 }
 
-.portfolio-layer a i {
+.portfolio-layer button i {
     font-size: 2.5rem;
     color: var(--font-color);
 }
+/* -----------Portfolio Section: Popout Modal ---------------*/
+
+.modal_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: red;
+    width: 100%;
+    overflow: hidden;
+    transition:  all .3s;
+    z-index: 99999;
+    visibility: hidden;
+    opacity: 0;
+}
+/* To show the Modal */
+.modal_container .show-modal{
+    visibility: visible;
+    opacity: 1;
+}
+.modal_content {
+    position: relative;
+    background-color: var(--color4);
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-radius: 10px;
+    transition: all .3s;
+    /* Effect*/
+}
+.modal_content.show-modal{
+    visibility: visible;
+    opacity: 1;
+}
+.modal_img{
+    width: 150px;
+    margin-bottom: 0.75rem;
+}
+.modal_close{
+    display: inline-flex;
+    background-color: var(--color13);
+    border-radius: 0.25rem;
+    color: var(--font-color);
+    font-size: 1.5rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+}
+.modal_title{
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color16);
+}
+.modal_description{
+    margin-bottom: 1.5rem;    
+}
+ .modal_button-source{
+    width: 90%;
+}
+.modal_button-live{
+    display: block;
+    margin: 1rem auto 0;
+    background-color: transparent;
+    color: var(--color4);
+    font-weight: 500;
+}
+.modal_button {
+    display: inline-block;
+    background-color: var(--color2);
+    color: var(--font-color);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.modal_button:hover {
+    background-color: var(--color1);
+}
+
 
 /*--------Contact Section Design----------*/
 
