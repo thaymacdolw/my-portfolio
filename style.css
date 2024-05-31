@@ -187,7 +187,7 @@ section {
     margin-left: 10px;
     font-size: 16px;
     transition: 0.4s ease;
-    color: var(--color12);
+    color: var(--color7);
     font-weight: 600;
 }
 
@@ -197,8 +197,8 @@ section {
 
 }
 
-.nav-button button:hover i {
-    color: var(--color12);
+.header-right .nav-button button:hover i {
+    color: var(--color11);
 }
 
 /*Dark Mode Icon */
@@ -541,11 +541,17 @@ section {
     width: 50%;
 }
 
-.tab-contents .stacks-img {
+.tab-contents .stacks-img, 
+.tab-contents .github  {
     width: 50px;
     max-width: 100%;
     height: auto;
 }
+body.dark-mode .github {
+    content: url('assets/logos/github-white.svg');
+}
+
+
 
 .tab-contents .ul-stacks,
 .tab-contents .ul-tools {
@@ -678,6 +684,7 @@ section {
     font-size: 1.6rem;
     margin: .3rem 0 1rem;
     color: var(--color11);
+    text-align: justify;
 }
 
 .portfolio-layer button {
@@ -711,16 +718,18 @@ section {
     text-align: center;
     transition:  all .3s;
     z-index: 99999;
-    background-color: var(--color4);
+    background-color: transparent;
+    animation: fadeIn .5s;
+    
 }
-
 .modal_content {
-    background-color: var(--color4);
+    background-color: var(--color14);
     text-align: center;
     padding: 3rem 2rem 2rem;
     border-radius: 10px;
-    transition: all .3s;
-    
+    transition: all .3s;  
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .1);  
+    animation: slideIn .5s;
 }
 .modal_img{
     width: 500px;
@@ -728,44 +737,76 @@ section {
 }
 .modal_close{
     display: inline-flex;
-    background-color: var(--color13);
+    background-color: var(--color6);
     border-radius: 0.5rem;
     color: var(--font-color);
     font-size:3rem;
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 3rem;
+    right: 3rem;
     cursor: pointer;
 }
 .modal_title{
     font-size: 3rem;
     font-weight: 500;
-    color: var(--color16);
+    color: var(--color6);
 }
 .modal_description{
-    font-size:1.5rem;    
+    font-size:1.5rem; 
+    color: var(--font-color);  
+    text-align: justify; 
 }
  .modal_button-source{
     padding:10px 20px ;
-    color: white;
+    color:var(--color14);
+    margin-right: 4rem;
+    font-size: 1.5rem;
 }
 .modal_button-live{
     display: block;
     margin: 1rem auto 0;
     padding:10px 20px ;
-    color: white;
+    color: var(--color11);
+    font-size: 1.5rem;
 }
 .modal_button {
     display: inline-block;
-    background-color: var(--color2);
-    color: var(--font-color);
+    background-color: var(--color6);
+    color: var(--color11);
     border-radius: 10px;
     transition: 0.3s;
 }
 .modal_button:hover {
+    color: var(--color11);
     background-color: var(--color1);
+    
+}
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50%);}
+    to {transform: translateY(0);}
+}
+
+@keyframes slideOut {
+    from {transform: translateY(0);}
+    to {transform: translateY(-50%);}
+}
+.modal_container.fadeOut {
+    animation: fadeOut 0.5s forwards;
+}
+
+.modal_content.slideOut {
+    animation: slideOut 0.5s forwards;
+}
 
 
 /*--------Contact Section Design----------*/

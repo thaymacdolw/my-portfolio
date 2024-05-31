@@ -1,3 +1,14 @@
+//----------------Scroll Reveal --------------
+ScrollReveal({
+    //reset: true,
+    distance: '80px',
+    duration: 1000,
+    delay: 100
+});
+ScrollReveal().reveal('.home-content, .heading, .subtitle-about', { origin: 'top' });
+ScrollReveal().reveal('.home-img img,.ul-stacks,.portfolio-box,.contact-container', { origin: 'bottom' });
+ScrollReveal().reveal('.about-col-1', { origin: 'left' });
+
 // -------------- Pop-out Modal ----------------------
 document.addEventListener('DOMContentLoaded', () => {
     const openButtons = document.querySelectorAll('.open-modal');
@@ -57,28 +68,35 @@ document.querySelectorAll('nav a').forEach(anchor => {
 });
 
 //--------------CV DOWNLOAD--------------------
-document.getElementById('downloadButton').addEventListener('click', function () {
-    // URL do arquivo PDF no GitHub
-    var pdfUrl = 'https://raw.githack.com/thaymacdolw/my-portfolio/main/assets/cvthay.pdf';
+// Seleciona todos os elementos com a classe .downloadButton
+var downloadButtons = document.querySelectorAll('.downloadButton');
 
-    // Fetch para obter o PDF
-    fetch(pdfUrl)
-        .then(response => response.blob())
-        .then(pdfBlob => {
-            // Cria um link temporário para o PDF
-            var link = document.createElement('a');
-            link.href = window.URL.createObjectURL(pdfBlob);
-            link.download = 'ThaynaMacDolwCV.pdf'; // Nome do arquivo que será baixado
+// Adiciona um event listener para cada botão
+downloadButtons.forEach(function(button) {
+    button.addEventListener('click', function () {
+        // URL do arquivo PDF no GitHub
+        var pdfUrl = 'https://raw.githack.com/thaymacdolw/my-portfolio/main/assets/cvthay.pdf';
 
-            // Adiciona o link ao DOM e clica nele para iniciar o download
-            document.body.appendChild(link);
-            link.click();
+        // Fetch para obter o PDF
+        fetch(pdfUrl) 
+            .then(response => response.blob())
+            .then(pdfBlob => {
+                // Cria um link temporário para o PDF
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(pdfBlob);
+                link.download = 'ThaynaMacDolwCV.pdf'; // Nome do arquivo que será baixado
 
-            // Limpeza dos recursos
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(link.href);
-        });
+                // Adiciona o link ao DOM e clica nele para iniciar o download
+                document.body.appendChild(link);
+                link.click();
+
+                // Limpeza dos recursos
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(link.href);
+            });
+    });
 });
+
 //-------OnClick feature on About Section-----------
 
 var tablinks = document.getElementsByClassName("tab-links");
@@ -218,33 +236,39 @@ scrollToTopButton.onclick = function (e) {
 //---------------Dark Mode -------------------
 let darkModeIcon = document.querySelector("#darkMode-icon");
 
+// Verificar e aplicar o tema salvo no localStorage ou a preferência do sistema
+document.addEventListener('DOMContentLoaded', (event) => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    if (savedTheme === 'dark' || (savedTheme === null && prefersDarkScheme)) {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+        darkModeIcon.classList.add('bx-sun');
+        darkModeIcon.classList.remove('bx-moon');
+    } else {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+        darkModeIcon.classList.add('bx-moon');
+        darkModeIcon.classList.remove('bx-sun');
+    }
+});
+
 darkModeIcon.onclick = () => {
     darkModeIcon.classList.toggle("bx-sun");
+    darkModeIcon.classList.toggle("bx-moon");
     document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("light-mode");
+
+    // Salvar a preferência do usuário no localStorage
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
 };
 
-//----------------Scroll Reveal --------------
-ScrollReveal({
-    //reset: true,
-    distance: '80px',
-    duration: 1000,
-    delay: 100
-});
-ScrollReveal().reveal('.home-content, .heading, .subtitle-about', { origin: 'top' });
-ScrollReveal().reveal('.home-img img,.ul-stacks,.portfolio-box,.contact-container', { origin: 'bottom' });
-ScrollReveal().reveal('.about-col-1', { origin: 'left' });
 
-// ------------------------Pop-out Modal ------------------
-//======Show modal =======
-/*const showModal = (openButton, modalContent) =>{
-    const openBtn = document.getElementById(openButton),
-    modalContainer = document.getElementById(modalContent)
 
-    if(openBtn && modalContainer){
-        openBtn.addEventListener( 'click', () =>{
-            modalContainer.classList.add('show-modal')
-        })
-    }
-}
-showModal('open-modal','modal-container')*/
+
 
