@@ -696,6 +696,7 @@ body.dark-mode .github {
     background: var(--color4);
     border-radius: 50%;
     margin: 0 2rem;
+    cursor: pointer;
 }
 
 .portfolio-layer button i {
@@ -969,6 +970,7 @@ form {
     text-decoration: none;
     color: var(--color4);
     font-size: 1.3rem;
+    cursor: pointer;
 }
 
 .social-icons {
