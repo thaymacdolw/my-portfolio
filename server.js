@@ -1,6 +1,7 @@
 const express = require ('express');
 const app = express();
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
@@ -14,34 +15,36 @@ app.get('/', (req, res)=> {
 
 app.post('/', (req, res)=> {
     console.log(req.body);
+    
+    console.log('EMAIL_USER:', process.env.EMAIL_USER);
+    console.log('EMAIL_PASS:', process.env.EMAIL_PASS);
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp.mail.yahoo.com',
+        host: 'smtp.zoho.eu',
         port: 465,
-        service: 'yahoo',
-        secure: false,
+        secure: true,
         auth: {
-            user: 'thaymacdolw@yahoo.com',
-            pass: '4u;V0a3)Z:9];'
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
         },
-        debug: false,
+        debug: true ,
         logger: true 
     });
 
     const mailOptions = {
-        from: req.body.email,
+        from: process.env.EMAIL_USER,
         to: 'thaymacdolw@gmail.com',
         subject: `Message from ${req.body.email} on my Portfolio`,
         text: req.body.message
-    }
-
+    };
+    console.log('Attempting to send email...');
     transporter.sendMail(mailOptions, (error, info)=> {
         if(error) {
             console.log(error);
             res.send('error');
         } else {
-            console.log('Email sent:' + info.reponse);
-            res.send('sucess')
+            console.log('Email sent:' + info.response);
+            res.send('success')
         }
     })
 });

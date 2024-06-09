@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="assets/head.svg" type="image/x-icon">
     <!-----------Link to CSS------------>
     <link rel="stylesheet" href="style.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="mixitup.min.js"></script>
 
     <title>Thayna MacDolw</title>
@@ -386,13 +386,13 @@
                 <p class="contact-text">I'm excited to find out how I can contribute to your project.</p>
                 <form class="contact-form" action="#">
                     <div class="inputBox">
-                        <input type="text" name="name" class="name" placeholder="Full Name">
+                        <input type="text" name="name" class="name" id="name" placeholder="Full Name">
                     </div>
                     <div class="inputBox">
-                        <input type="text" name="email" class="email" placeholder="E-mail address">
+                        <input type="text" name="email" class="email" id="email" placeholder="E-mail address">
                     </div>
                     <div class="inputBox">
-                        <textarea name="message" class="message" placeholder="Enter your message..."></textarea>
+                        <textarea name="message" class="message" id="message" placeholder="Enter your message..."></textarea>
                     </div>
                     <button type="submit" class="btn-contact">Submit</button>
                 </form>
@@ -461,6 +461,8 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <!----------Main JS-------------->
     <script src="script.js"></script>
+   
+
 </body>
 
 </html>

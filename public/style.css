@@ -8,6 +8,7 @@
     --font1: 'Poppins', sans-serif;
     --font2: 'Rubik', sans-serif;
     --font-color: #333;
+    --font-color2: #f5f7ff;
     --color1: #5a618b;
     --color2: #adb1f4;
     --color3:#2f3960;
@@ -24,6 +25,7 @@
     --color14:#f5f7ff;
     --color15:rgb(248, 95, 95);
     --color16:#8c93e9;
+    --color17:#5a618b;
     --shadow:rgba(0, 0, 0, .2);
     --branco:#FFFFFF;
     --preto: #000000;
@@ -32,6 +34,7 @@
 
 .dark-mode {
     --font-color:#f5f7ff;
+    --font-color2: #333;
     --color1: #5a618b;
     --color2: #adb1f4;
     --color3:#adb1f4;
@@ -48,6 +51,7 @@
     --color14:#2f3960;
     --color15:rgb(201, 0, 0);
     --color16:#041034;
+    --color17:#f5f7ff;
     --shadow:rgba(0, 0, 0, .2);
     --branco:#FFFFFF;
     --preto: #000000;
@@ -897,6 +901,12 @@ form {
 .inputBox .err-msg {
     font-size: 1rem;
     color: var(--color15);
+}
+.inputBox input.name.filled,
+.inputBox input.email.filled,
+.inputBox textarea.message.typing {
+    color: var(--font-color2);
+    background-color: var(--color17);
 }
 
 .btn-contact {

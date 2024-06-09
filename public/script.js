@@ -115,7 +115,7 @@ function opentab(tabname) {
 
 //---------Contact Form------------
 
-/* const form = document.querySelector("form");
+const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault(); //prevent the page to refresh
@@ -188,7 +188,10 @@ const removeError = (field) => {
     if (error) {
         error.remove();
     }
-}; */
+}; 
+
+
+//Sending to server
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
     const nameField = document.querySelector('.name'); 
@@ -303,6 +306,29 @@ darkModeIcon.onclick = () => {
         localStorage.setItem('theme', 'light');
     }
 };
+
+// Changing when typing in the textarea and input 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const messageTextarea = document.getElementById('message');
+
+    messageTextarea.addEventListener('input', () => {
+        if (messageTextarea.value.trim() !== '') {
+            messageTextarea.classList.add('typing');
+        } else {
+            messageTextarea.classList.remove('typing');
+        }
+    });
+});
+$(document).ready(function() {
+    $('#name, #email').on('input', function() {
+        if ($(this).val().length > 0) {
+            $(this).addClass('filled');
+        } else {
+            $(this).removeClass('filled');
+        }
+    });
+});
 
 
 
