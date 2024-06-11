@@ -150,17 +150,54 @@ function opentab(tabname) {
 
 //---------Contact Form------------
 
+
+//Customized alert
+const showAlert = (message, type) => {
+    const successAlert = document.getElementById('success-alert');
+    const errorAlert = document.getElementById('error-alert');
+
+    if (type === 'success') {
+        successAlert.querySelector('p').textContent = message;
+        successAlert.style.display = 'block';
+        setTimeout(() => {
+            successAlert.style.display = 'none';
+        }, 4000); // Tempo que o alerta fica visível
+    } else if (type === 'error') {
+        errorAlert.querySelector('p').textContent = message;
+        errorAlert.style.display = 'block';
+        setTimeout(() => {
+            errorAlert.style.display = 'none';
+        }, 4000); // Tempo que o alerta fica visível
+    }
+};
+
+//Form
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault(); //prevent the page to refresh
-    //it won't do nothing if the form doesn't validate
+    e.preventDefault(); 
     if (!validateForm(form)) return;
 
-    //if form is valid, i'll be submited
-    alert("Message succefully sent!");
+    const formData = {
+        name: form.querySelector(".name").value,
+        email: form.querySelector(".email").value,
+        message: form.querySelector(".message").value
+    };
 
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+        console.log(xhr.responseText);
+        if (xhr.responseText === 'success') {
+            showAlert('Message successfully sent!', 'success');
+            form.reset(); 
+        } else {
+            showAlert('Something went wrong!', 'error');
+        }
+    };
 
+    xhr.send(JSON.stringify(formData));
 });
 
 const validateForm = (form) => {
@@ -188,14 +225,14 @@ const validateForm = (form) => {
     }
     //to return true if email is valid
     if (valid) {
-        return true; //!!!!!personalizar janela pop-out!!!!!!
+        return true; 
     }
 };
 
 const giveError = (field, message) => {
     let parentElement = field.parentElement;
     parentElement.classList.add("error");
-    //if the error message already exists, it'll not repeat it
+ 
     let existingError = parentElement.querySelector(".err-msg")
     if (existingError) {
         existingError.remove();
@@ -236,6 +273,11 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
+        if (!validateForm(contactForm)) {
+            showAlert('Please fill out all fields correctly.', 'error');
+            return;
+        }
+
         const formData = {
             name: nameField.value,
             email: emailField.value,
@@ -248,12 +290,12 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.onload = function () {
             console.log(xhr.responseText);
             if (xhr.responseText === 'success') {
-                alert('Message sent');
+                showAlert('Message successfully sent!', 'success');
                 nameField.value = '';
                 emailField.value = '';
                 messageField.value = '';
             } else {
-                alert('Something went wrong!');
+                showAlert('Something went wrong!', 'error');
             }
         };
 
