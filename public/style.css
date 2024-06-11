@@ -26,6 +26,8 @@
     --color15:rgb(248, 95, 95);
     --color16:#8c93e9;
     --color17:#5a618b;
+    --color18:#b1b2e3;
+    --color19:#041034;
     --shadow:rgba(0, 0, 0, .2);
     --branco:#FFFFFF;
     --preto: #000000;
@@ -52,6 +54,8 @@
     --color15:rgb(201, 0, 0);
     --color16:#041034;
     --color17:#f5f7ff;
+    --color18:#2f3960;
+    --color19:#8c93e9;
     --shadow:rgba(0, 0, 0, .2);
     --branco:#FFFFFF;
     --preto: #000000;
@@ -633,9 +637,10 @@ body.dark-mode .github {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    gap: 2.5rem;
+    gap: 5rem 2.5rem;
     justify-content: space-between;
     padding: 0 2rem;
+    margin-top: 3rem;
 }
 
 .portfolio-container .portfolio-box {
@@ -644,12 +649,13 @@ body.dark-mode .github {
     box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
     overflow: hidden;
     width: 89%;
-    height: 90%;
+    height: 100%;
     margin: 0 auto;
 }
 
 .portfolio-box img {
     width: 100%;
+    height: 100%;
     transition: .5s ease;
 }
 
@@ -724,27 +730,29 @@ body.dark-mode .github {
     transition:  all .3s;
     z-index: 99999;
     background-color: transparent;
-    animation: fadeIn .5s;
+    /*animation: fadeIn .5s;*/
     
 }
+
 .modal_content {
-    background-color: var(--color14);
+    background-color: var(--color18);
     text-align: center;
     padding: 3rem 2rem 2rem;
     border-radius: 10px;
     transition: all .3s;  
     box-shadow: 0 0 1rem rgba(0, 0, 0, .1);  
-    animation: slideIn .5s;
+    /*animation: slideIn .5s;*/
 }
 .modal_img{
     width: 500px;
     margin-bottom: 0.75rem;
+    border-radius: 5px;
 }
 .modal_close{
     display: inline-flex;
-    background-color: var(--color6);
+    background-color: var(--color19);
     border-radius: 0.5rem;
-    color: var(--font-color);
+    color: var(--color11);
     font-size:3rem;
     position: absolute;
     top: 3rem;
@@ -754,12 +762,13 @@ body.dark-mode .github {
 .modal_title{
     font-size: 3rem;
     font-weight: 500;
-    color: var(--color6);
+    color: var(--color19);
 }
 .modal_description{
     font-size:1.5rem; 
     color: var(--font-color);  
     text-align: justify; 
+    margin: 0 2rem;
 }
  .modal_button-source{
     padding:10px 20px ;
@@ -776,16 +785,18 @@ body.dark-mode .github {
 }
 .modal_button {
     display: inline-block;
-    background-color: var(--color6);
+    background-color: var(--color19);
     color: var(--color11);
     border-radius: 10px;
     transition: 0.3s;
+    margin-bottom: 1rem;
 }
 .modal_button:hover {
     color: var(--color11);
     background-color: var(--color1);
     
 }
+/*
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -811,7 +822,7 @@ body.dark-mode .github {
 
 .modal_content.slideOut {
     animation: slideOut 0.5s forwards;
-}
+}*/
 
 
 /*--------Contact Section Design----------*/
