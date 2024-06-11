@@ -9,6 +9,34 @@ ScrollReveal().reveal('.home-content, .heading, .subtitle-about', { origin: 'top
 ScrollReveal().reveal('.home-img img,.ul-stacks,.portfolio-box,.contact-container', { origin: 'bottom' });
 ScrollReveal().reveal('.about-col-1', { origin: 'left' });
 
+/// Only one scroll will be necessary 
+gsap.registerPlugin(ScrollToPlugin);
+let currentSection = 0;
+        const sectionsScroll = document.querySelectorAll('.section');
+
+        function scrollToSection(index) {
+            if (index < 0 || index >= sections.length) return;
+            currentSection = index;
+            gsap.to(window, { 
+                scrollTo: { y: sections[index], autoKill: false }, 
+                duration: 0.8 
+            });
+        }
+
+        window.addEventListener('wheel', (event) => {
+            if (event.deltaY > 0) {
+                // Scrolling down
+                scrollToSection(currentSection + 1);
+            } else {
+                // Scrolling up
+                scrollToSection(currentSection - 1);
+            }
+        });
+
+        window.addEventListener('scroll', (event) => {
+            event.preventDefault();
+        }, { passive: false });
+
 // -------------- Pop-out Modal ----------------------
 document.addEventListener('DOMContentLoaded', () => {
     const openButtons = document.querySelectorAll('.open-modal');
@@ -191,7 +219,7 @@ const removeError = (field) => {
 }; 
 
 
-//Sending to server
+//Sending data to server
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
     const nameField = document.querySelector('.name'); 
