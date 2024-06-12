@@ -722,7 +722,8 @@ body.dark-mode .github {
     text-align: justify;
 }
 
-.portfolio-layer button {
+.portfolio-layer button,
+.portfolio-layer a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -734,7 +735,8 @@ body.dark-mode .github {
     cursor: pointer;
 }
 
-.portfolio-layer button i {
+.portfolio-layer button i,
+.portfolio-layer a i {
     font-size: 2.5rem;
     color: var(--font-color);
 }
@@ -800,7 +802,7 @@ body.dark-mode .github {
 }
 
 .modal_img {
-    width: 500px;
+    width: 80%;
     margin-bottom: 0.75rem;
     border-radius: 5px;
 }
