@@ -304,7 +304,8 @@ section {
     color: var(--color4);
 }
 
-.btn {
+.btn,
+#btn {
     display: inline-block;
     padding: 1.2rem 2.8rem;
     background: var(--color6);
@@ -319,14 +320,15 @@ section {
     transition: 0.5s ease;
 }
 
-.btn:hover {
+.btn:hover,
+#btn:hover {
     background: transparent;
     color: var(--color6);
     border-color: var(--color6);
 
 }
 
-.btn i {
+#btn i {
     margin-left: 1rem;
 }
 

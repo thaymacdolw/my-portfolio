@@ -1,4 +1,6 @@
-const express = require ('express');
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
 const app = express();
 const nodemailer = require('nodemailer');
 require('dotenv').config();
@@ -9,13 +11,13 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static('public'));
 app.use(express.json());
 
-app.get('/', (req, res)=> {
-    res.sendFile(__dirname + '/public/index.html')
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.post('/', (req, res)=> {
+app.post('/', (req, res) => {
     console.log(req.body);
-    
+
     console.log('EMAIL_USER:', process.env.EMAIL_USER);
     console.log('EMAIL_PASS:', process.env.EMAIL_PASS);
 
@@ -27,8 +29,8 @@ app.post('/', (req, res)=> {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS
         },
-        debug: true ,
-        logger: true 
+        debug: true,
+        logger: true
     });
 
     const mailOptions = {
@@ -38,8 +40,8 @@ app.post('/', (req, res)=> {
         text: req.body.message
     };
     console.log('Attempting to send email...');
-    transporter.sendMail(mailOptions, (error, info)=> {
-        if(error) {
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
             console.log(error);
             res.send('error');
         } else {
@@ -50,6 +52,19 @@ app.post('/', (req, res)=> {
 });
 
 
-app.listen(PORT, ()=> {
+//---------Download CV------------
+app.get('/download-cv', (req, res) => {
+    const filePath = path.join(__dirname, 'public', 'assets', 'ThaynaMacDolwCV.pdf');
+
+    res.setHeader('Content-Disposition', 'attachment; filename="ThaynaMacDolwCV.pdf"');
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Erro ao baixar o currículo.');
+        }
+    });
+});
+
+app.listen(PORT, () => {
     console.log(`Server running on' ${PORT}`)
 });

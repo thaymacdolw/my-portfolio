@@ -1,6 +1,5 @@
 //----------------Scroll Reveal --------------
 ScrollReveal({
-    //reset: true,
     distance: '80px',
     duration: 1000,
     delay: 100
@@ -103,32 +102,39 @@ document.querySelectorAll('nav a').forEach(anchor => {
 });
 
 //--------------CV DOWNLOAD--------------------
-// Seleciona todos os elementos com a classe .downloadButton
+
 var downloadButtons = document.querySelectorAll('.downloadButton');
 
-// Adiciona um event listener para cada botão
+
 downloadButtons.forEach(function (button) {
     button.addEventListener('click', function () {
-        // URL do arquivo PDF no GitHub
-        var pdfUrl = 'https://raw.githack.com/thaymacdolw/my-portfolio/main/assets/cvthay.pdf';
+        
+        var serverUrl = 'http://localhost:5000/download-cv';
 
-        // Fetch para obter o PDF
-        fetch(pdfUrl)
-            .then(response => response.blob())
-            .then(pdfBlob => {
-                // Cria um link temporário para o PDF
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', serverUrl, true);
+        xhr.responseType = 'blob';
+        
+      
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                var url = window.URL.createObjectURL(blob);
+
                 var link = document.createElement('a');
-                link.href = window.URL.createObjectURL(pdfBlob);
-                link.download = 'ThaynaMacDolwCV.pdf'; // Nome do arquivo que será baixado
+                link.href = url;
+                link.download = 'ThaynaMacDolwCV.pdf'; 
 
-                // Adiciona o link ao DOM e clica nele para iniciar o download
+                
                 document.body.appendChild(link);
                 link.click();
 
-                // Limpeza dos recursos
+               
                 document.body.removeChild(link);
                 window.URL.revokeObjectURL(link.href);
-            });
+            }
+        };
+        xhr.send();
     });
 });
 
@@ -204,7 +210,7 @@ form.addEventListener("submit", (e) => {
 
 const validateForm = (form) => {
     let valid = true;
-    //it will check for empty fields
+    
     let name = form.querySelector(".name");
     let message = form.querySelector(".message");
     let email = form.querySelector(".email");
@@ -225,7 +231,7 @@ const validateForm = (form) => {
         giveError(email, "Please enter a valid email");
         valid = false;
     }
-    //to return true if email is valid
+    
     if (valid) {
         return true; 
     }
@@ -310,12 +316,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const scrollToTopButton = document.getElementById('js-top');
 let scrollTimeout;
-//creating a function that shows the scroll-to-top button if the user scrolls beyond the height of the initial window.
+
 const scrollFunc = () => {
-    // Get the current scroll value
+    
     let y = window.scrollY;
 
-    // If the scroll value is greater than the window height, let's add a class to the scroll-to-top button to show it!
     if (y > 0) {
         scrollToTopButton.classList.add("show");
         scrollToTopButton.classList.remove("hide");
@@ -327,25 +332,21 @@ const scrollFunc = () => {
     scrollTimeout = setTimeout(() => {
         scrollToTopButton.classList.add("hide");
         scrollToTopButton.classList.remove("show");
-    }, 3000); // 3 segundos
+    }, 3000); 
 };
 
 window.addEventListener("scroll", scrollFunc);
 const scrollToTop = () => {
-    // Let's set a variable for the number of pixels we are from the top of the document.
+    
     const c = document.documentElement.scrollTop || document.body.scrollTop;
 
-    // If that number is greater than 0, we'll scroll back to 0, or the top of the document.
-    // We'll also animate that scroll with requestAnimationFrame:
-    // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
     if (c > 0) {
         window.requestAnimationFrame(scrollToTop);
-        // ScrollTo takes an x and a y coordinate.
-        // Increase the '10' value to get a smoother/slower scroll!
+        
         window.scrollTo(0, c - c / 10);
     };
 };
-// When the button is clicked, run our ScrolltoTop function above!
+
 scrollToTopButton.onclick = function (e) {
     e.preventDefault();
     scrollToTop();
@@ -354,7 +355,7 @@ scrollToTopButton.onclick = function (e) {
 //---------------Dark Mode -------------------
 let darkModeIcon = document.querySelector("#darkMode-icon");
 
-// Verificar e aplicar o tema salvo no localStorage ou a preferência do sistema
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -378,7 +379,7 @@ darkModeIcon.onclick = () => {
     document.body.classList.toggle("dark-mode");
     document.body.classList.toggle("light-mode");
 
-    // Salvar a preferência do usuário no localStorage
+    
     if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
     } else {
