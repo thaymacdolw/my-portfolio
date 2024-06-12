@@ -28,6 +28,12 @@
     --color17: #5a618b;
     --color18: #b1b2e3;
     --color19: #041034;
+    --color20:#F0FDFA;
+    --color21:#99F6E4;
+    --color22:#216A65;
+    --color23:#FEF2F2;
+    --color24:#FECACA;
+    --color25:#A51B1B;
     --shadow: rgba(0, 0, 0, .2);
     --branco: #FFFFFF;
     --preto: #000000;
@@ -56,6 +62,12 @@
     --color17: #f5f7ff;
     --color18: #2f3960;
     --color19: #8c93e9;
+    --color20:#232B2B;
+    --color21:#134E4A;
+    --color22:#18B8A6;
+    --color23:#322424;
+    --color24:#731A1A;
+    --color25:#EF4444;
     --shadow: rgba(0, 0, 0, .2);
     --branco: #FFFFFF;
     --preto: #000000;
@@ -565,7 +577,7 @@ section {
 }
 
 body.dark-mode .github {
-    content: url('/public/assets/logos/github-white.svg');
+    content: url('/assets/logos/github-white.svg');
 }
 
 
@@ -726,11 +738,41 @@ body.dark-mode .github {
 }
 
 /* -----------Portfolio Section: Popout Modal ---------------*/
-
+@keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes zoomOut {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+  }
+  
+  .modal_container.active {
+    display: block;
+    animation: zoomIn 0.5s forwards;
+  }
+  
+  .modal_container.zoom-out {
+    animation: zoomOut 0.5s forwards;
+  }
+  
 .modal_container {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 20%;
+    left: 30%;
     transform: translate(-50%, -50%);
     display: none;
     width: 70%;
@@ -753,7 +795,6 @@ body.dark-mode .github {
     border-radius: 10px;
     transition: all .3s;
     box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
-    /*animation: slideIn .5s;*/
 }
 
 .modal_img {
@@ -1013,11 +1054,48 @@ form {
 }
 
 /*-----------Alert Messages -------------*/
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+.alert {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.alert.show {
+    opacity: 1;
+    animation: slideDown 0.5s forwards;
+}
+
+.alert.hide {
+    animation: slideUp 0.5s forwards;
+    opacity: 0;
+}
 .alert-container {
     position: fixed;
-    top: 30%;
+    top: 20%; 
+    left: 40%; 
+    transform: translate(-50%, -50%); 
     z-index: 99999;
-
 }
 
 .alert-error,
@@ -1025,47 +1103,51 @@ form {
     background: transparent;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    width: 500px;    
+    width: 400px;    
     height: 60px;
-    animation: slideIn .5s;
 }
 .content-success,
 .content-error {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 }
 
 .alert-error {
-    background: #ffc2c2;
+    background:var(--color23);
+    border: solid 1px var(--color24);
     
 }
 
 .alert-success {
-    background: #e5fde1;
+    background:var(--color20);
+    border: solid 1px var(--color21);
 }
 
 .content-success i,
 .content-error i {
-    color: #000;
     margin-right: 10px;
     font-size: 2rem;
-
 }
 
 .alert-success #check {
-    color: #5ada44;
+    color: var(--color22);
 }
 
 .alert-error #error {
-    color: #e62424;
+    color:var(--color25);
+    
 }
 
-.alert-success p,
-.alert-error p {
-    color: #000;
+.alert-success p{
+    color: var(--color22);
     font-size: 1.8rem;
+}
+.alert-error p {
+    color:var(--color25);
+    font-size: 1.8rem;
+    
 }
 
 

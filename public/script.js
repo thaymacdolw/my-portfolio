@@ -48,10 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const modalId = button.dataset.modalId;
             const modal = document.getElementById(modalId);
             modalContainers.forEach(container => {
-                container.style.display = 'none';
                 container.classList.remove('active');
             });
-            modal.style.display = 'block';
             modal.classList.add('active');
         });
     });
@@ -59,8 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
             const modal = button.closest('.modal_container');
-            modal.style.display = 'none';
-            modal.classList.remove('active');
+            modal.classList.add('zoom-out');
+            setTimeout(() => {
+                modal.classList.remove('active', 'zoom-out');
+              }, 500);
         });
     });
 });
@@ -156,19 +156,21 @@ const showAlert = (message, type) => {
     const successAlert = document.getElementById('success-alert');
     const errorAlert = document.getElementById('error-alert');
 
-    if (type === 'success') {
-        successAlert.querySelector('p').textContent = message;
-        successAlert.style.display = 'block';
-        setTimeout(() => {
-            successAlert.style.display = 'none';
-        }, 4000); // Tempo que o alerta fica visível
-    } else if (type === 'error') {
-        errorAlert.querySelector('p').textContent = message;
-        errorAlert.style.display = 'block';
-        setTimeout(() => {
-            errorAlert.style.display = 'none';
-        }, 4000); // Tempo que o alerta fica visível
-    }
+    const alert = type === 'success' ? successAlert : errorAlert;
+    alert.querySelector('p').textContent = message;
+
+    alert.classList.add('show');
+    alert.classList.remove('hide');
+    alert.style.display = 'block';
+
+    setTimeout(() => {
+        alert.classList.remove('show');
+        alert.classList.add('hide');
+
+        alert.addEventListener('animationend', () => {
+            alert.style.display = 'none';
+        }, { once: true });
+    }, 4000); 
 };
 
 //Form
