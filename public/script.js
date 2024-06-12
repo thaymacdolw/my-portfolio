@@ -12,30 +12,30 @@ ScrollReveal().reveal('.about-col-1', { origin: 'left' });
 /// Only one scroll will be necessary 
 gsap.registerPlugin(ScrollToPlugin);
 let currentSection = 0;
-        const sectionsScroll = document.querySelectorAll('.section');
+const sectionsScroll = document.querySelectorAll('.section');
 
-        function scrollToSection(index) {
-            if (index < 0 || index >= sections.length) return;
-            currentSection = index;
-            gsap.to(window, { 
-                scrollTo: { y: sections[index], autoKill: false }, 
-                duration: 0.8 
-            });
-        }
+function scrollToSection(index) {
+    if (index < 0 || index >= sections.length) return;
+    currentSection = index;
+    gsap.to(window, {
+        scrollTo: { y: sections[index], autoKill: false },
+        duration: 0.9
+    });
+}
 
-        window.addEventListener('wheel', (event) => {
-            if (event.deltaY > 0) {
-                // Scrolling down
-                scrollToSection(currentSection + 1);
-            } else {
-                // Scrolling up
-                scrollToSection(currentSection - 1);
-            }
-        });
+window.addEventListener('wheel', (event) => {
+    if (event.deltaY > 0) {
+        // Scrolling down
+        scrollToSection(currentSection + 1);
+    } else {
+        // Scrolling up
+        scrollToSection(currentSection - 1);
+    }
+});
 
-        window.addEventListener('scroll', (event) => {
-            event.preventDefault();
-        }, { passive: false });
+window.addEventListener('scroll', (event) => {
+    event.preventDefault();
+}, { passive: false });
 
 // -------------- Pop-out Modal ----------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -47,18 +47,25 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const modalId = button.dataset.modalId;
             const modal = document.getElementById(modalId);
-            modalContainers.forEach(container => container.style.display = 'none'); // Oculta todos os modais antes de abrir um novo
-            modal.style.display = 'block'; // Exibe o modal específico
+            modalContainers.forEach(container => {
+                container.classList.remove('active');
+            });
+            modal.classList.add('active');
         });
     });
 
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
             const modal = button.closest('.modal_container');
-            modal.style.display = 'none'; // Oculta o modal específico
+            modal.classList.add('zoom-out');
+            setTimeout(() => {
+                modal.classList.remove('active', 'zoom-out');
+              }, 500);
         });
     });
 });
+
+
 //-------------scroll sections active link ---------
 let sections = document.querySelectorAll("section");
 let navLinks = document.querySelectorAll("header nav a");
@@ -78,7 +85,7 @@ window.onscroll = () => {
         };
     });
 
-//---------Sticky Navbar------------
+    //---------Sticky Navbar------------
 
     let header = document.querySelector('.header');
 
@@ -100,13 +107,13 @@ document.querySelectorAll('nav a').forEach(anchor => {
 var downloadButtons = document.querySelectorAll('.downloadButton');
 
 // Adiciona um event listener para cada botão
-downloadButtons.forEach(function(button) {
+downloadButtons.forEach(function (button) {
     button.addEventListener('click', function () {
         // URL do arquivo PDF no GitHub
         var pdfUrl = 'https://raw.githack.com/thaymacdolw/my-portfolio/main/assets/cvthay.pdf';
 
         // Fetch para obter o PDF
-        fetch(pdfUrl) 
+        fetch(pdfUrl)
             .then(response => response.blob())
             .then(pdfBlob => {
                 // Cria um link temporário para o PDF
@@ -143,17 +150,56 @@ function opentab(tabname) {
 
 //---------Contact Form------------
 
+
+//Customized alert
+const showAlert = (message, type) => {
+    const successAlert = document.getElementById('success-alert');
+    const errorAlert = document.getElementById('error-alert');
+
+    const alert = type === 'success' ? successAlert : errorAlert;
+    alert.querySelector('p').textContent = message;
+
+    alert.classList.add('show');
+    alert.classList.remove('hide');
+    alert.style.display = 'block';
+
+    setTimeout(() => {
+        alert.classList.remove('show');
+        alert.classList.add('hide');
+
+        alert.addEventListener('animationend', () => {
+            alert.style.display = 'none';
+        }, { once: true });
+    }, 4000); 
+};
+
+//Form
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault(); //prevent the page to refresh
-    //it won't do nothing if the form doesn't validate
+    e.preventDefault(); 
     if (!validateForm(form)) return;
 
-    //if form is valid, i'll be submited
-    alert("Message succefully sent!");
+    const formData = {
+        name: form.querySelector(".name").value,
+        email: form.querySelector(".email").value,
+        message: form.querySelector(".message").value
+    };
 
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+        console.log(xhr.responseText);
+        if (xhr.responseText === 'success') {
+            showAlert('Message successfully sent!', 'success');
+            form.reset(); 
+        } else {
+            showAlert('Something went wrong!', 'error');
+        }
+    };
 
+    xhr.send(JSON.stringify(formData));
 });
 
 const validateForm = (form) => {
@@ -181,14 +227,14 @@ const validateForm = (form) => {
     }
     //to return true if email is valid
     if (valid) {
-        return true; //!!!!!personalizar janela pop-out!!!!!!
+        return true; 
     }
 };
 
 const giveError = (field, message) => {
     let parentElement = field.parentElement;
     parentElement.classList.add("error");
-    //if the error message already exists, it'll not repeat it
+ 
     let existingError = parentElement.querySelector(".err-msg")
     if (existingError) {
         existingError.remove();
@@ -216,18 +262,23 @@ const removeError = (field) => {
     if (error) {
         error.remove();
     }
-}; 
+};
 
 
 //Sending data to server
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
-    const nameField = document.querySelector('.name'); 
+    const nameField = document.querySelector('.name');
     const emailField = document.querySelector('.email');
     const messageField = document.querySelector('.message');
 
     contactForm.addEventListener("submit", (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
+
+        if (!validateForm(contactForm)) {
+            showAlert('Please fill out all fields correctly.', 'error');
+            return;
+        }
 
         const formData = {
             name: nameField.value,
@@ -241,12 +292,12 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.onload = function () {
             console.log(xhr.responseText);
             if (xhr.responseText === 'success') {
-                alert('Message sent');
+                showAlert('Message successfully sent!', 'success');
                 nameField.value = '';
                 emailField.value = '';
                 messageField.value = '';
             } else {
-                alert('Something went wrong!');
+                showAlert('Something went wrong!', 'error');
             }
         };
 
@@ -348,8 +399,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-$(document).ready(function() {
-    $('#name, #email').on('input', function() {
+$(document).ready(function () {
+    $('#name, #email').on('input', function () {
         if ($(this).val().length > 0) {
             $(this).addClass('filled');
         } else {
