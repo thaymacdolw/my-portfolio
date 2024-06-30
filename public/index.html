@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thayna MacDolw</title>
     <!----------------Iconscout------------>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
     <!---------------box icons------------->
@@ -15,15 +16,13 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="mixitup.min.js"></script>
-
-    <title>Thayna MacDolw</title>
 </head>
 
 <body>
     <!-----------------Header Design------------->
     <header class="header">
         <a href="#" class="logo">Thayna.</a>
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#portfolio">Projects</a>
@@ -34,6 +33,7 @@
                 <button class="downloadButton">Download CV<i class="uil uil-file-alt"></i></button>
             </div>
             <div class="bx bx-moon" id="darkMode-icon"></div>
+            <div class="bx bx-menu" id="menu-icon" onclick="toggleMenu()"></div>
         </div>
     </header>
     <!--------------Home Section--------------->

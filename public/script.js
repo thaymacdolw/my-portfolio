@@ -412,5 +412,12 @@ $(document).ready(function () {
 
 
 
-
+function toggleMenu() {
+    const navbar = document.querySelectorAll('navbar');
+    if (navbar.style.display === 'none' || navbar.style.display === '') {
+        navbar.style.display = 'flex';
+    } else {
+        navbar.style.display = 'none';
+    }
+}
 

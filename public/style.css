@@ -34,6 +34,8 @@
     --color23:#FEF2F2;
     --color24:#FECACA;
     --color25:#A51B1B;
+    --shadow2:rgba(0, 0, 0, .2);
+    --shadow3:rgba(0, 0, 0, .1);
     --shadow: rgba(0, 0, 0, .2);
     --branco: #FFFFFF;
     --preto: #000000;
@@ -68,6 +70,8 @@
     --color23:#322424;
     --color24:#731A1A;
     --color25:#EF4444;
+    --shadow2:rgba(255, 255, 255, 0.2);
+    --shadow3:rgba(255, 255, 255, 0.1);
     --shadow: rgba(0, 0, 0, .2);
     --branco: #FFFFFF;
     --preto: #000000;
@@ -136,7 +140,11 @@ section {
     background-color: var(--color8);
     box-shadow: 0 .1rem 1rem var(--shadow)
 }
-
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--color4);
+    display: none;
+}
 .logo {
     font-size: 2.5rem;
     color: var(--color3);
@@ -788,8 +796,6 @@ body.dark-mode .github {
     transition: all .3s;
     z-index: 99999;
     background-color: transparent;
-    /*animation: fadeIn .5s;*/
-
 }
 
 .modal_content {
@@ -1211,3 +1217,112 @@ form {
     font-size: 2.9rem;
     color: var(--color6);
 }
+
+/*--------BREAKPOINTS---------*/
+
+/*Mobile Devices (up to 480px)*/
+
+@media (max-width: 1200px) {
+    html{
+        font-size: 55%;
+    }
+    .home .techs-container .techs-box{
+        right: -12rem;
+        height: 85.8rem;
+    }
+    .home .techs-container .overlay{
+        right: -9rem;
+    }
+}
+@media (max-width: 1024px) {
+    .header {
+        padding: 2rem 3%;
+    }
+    section {
+        padding: 10rem 3% 2rem;
+    }
+    .home .techs-container .techs-box{
+        right: -22rem;
+    }
+    .home .techs-container .overlay{
+        right: -15rem;
+    }
+}
+@media (max-width: 991px) {
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2),
+    .navbar a:nth-child(3),
+    .navbar a:nth-child(4){
+        color: var(--color3);
+    }
+    .navbar a.active::before {
+        background: var(--color3);
+        opacity: .7;
+    }
+    .home .home-content {
+        max-width: 50rem;
+    }
+    .home .techs-container .techs-box{
+        right: -45rem;
+    }
+    .home .techs-container .overlay{
+        right: -39.5rem;
+    }
+    .home-img img {
+        display: none;
+    }
+    
+}
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+        color: var(--color3);
+        padding-right: 2rem;
+        cursor: pointer;
+    }
+    #darkMode-icon{
+        color: var(--color3);
+        padding-right: 1rem;
+        font-size: 2.5rem;
+    }
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        padding: 1rem;
+        background:var(--color4);
+        border-top:  .1rem solid var(--shadow2);
+        box-shadow: 0 .3rem .8rem var(--shadow3);
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        z-index: 9999999;
+    }
+    .navbar a {
+        display: block; 
+        width: 100%; 
+        padding: 1rem 0; 
+        color: var(--color3); 
+        text-align: left; 
+        border-bottom: .1rem solid var(--shadow2);
+        transition: background .3s, color .3s;   
+    }
+    .navbar a:hover {
+        background: var(--color3); 
+        color: var(--color4); 
+    }
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2){
+        color: violet;
+    }
+    .navbar a.active {
+        color: red;
+    }
+    .home-content .downloadButton {
+       background: var(--color3);
+    }
+}
+
+
