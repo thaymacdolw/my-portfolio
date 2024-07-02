@@ -1287,6 +1287,10 @@ form {
         background-color: var(--color14);
         color: var(--color7);
     }
+    .nav-button button:hover i {
+        background: var(--color1);
+        color: var(--color7);
+    }
 
     #darkMode-icon {
         color: var(--color4);
@@ -1353,6 +1357,7 @@ form {
         transition: background .3s, color .3s;
         font-size: 3rem;
     }
+   
 
     #menu-icon {
         display: block;
@@ -1401,19 +1406,93 @@ form {
         width: 65%;
 
     }
-    .about .about-content .about-col-2 .tab-titles p {
-        
-        width: 50%;
+
+    .about .about-content .tab-titles {
+        margin-left: 3rem;
+        width: 60%;
     }
-    .about .about-content .about-col-2 #stacks,.about .about-content .about-col-2 #tools{
+
+    .about .about-content .about-col-2 #stacks,
+    .about .about-content .about-col-2 #tools {
         margin-left: 6rem;
         width: 75%;
     }
-    .about-content .about-col-2 #education, .about-content .about-col-2 #languages, .about-content .about-col-2 #curiosities {
+
+    .about-content .about-col-2 #education,
+    .about-content .about-col-2 #languages,
+    .about-content .about-col-2 #curiosities {
         margin-left: 8rem;
         width: 70%;
     }
-    
+
+    /*-------Portfólio----------*/
+    .portfolio .portfolio-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+        padding: 0 2rem;
+        justify-content: space-between;
+        gap: 5rem 8rem;
+
+    }
+
+    .portfolio-container .portfolio-box {
+        width: 400px;
+        height: 250px;
 
 
+    }
+
+    .portfolio-box img {
+        width: 400px;
+        height: 250px;
+        transition: .5s ease;
+    }
+
+    .portfolio-box:hover img {
+        transform: scale(1.1);
+    }
+
+    .portfolio-box .portfolio-layer {
+        width: 400px;
+        height: 250px;
+    }
+
+    /*----Modal pop out---*/
+    .modal_container {
+        width: 500px;
+        position: fixed;
+        top: 30%;
+        left: -1%;
+    }
+
+    /*-------Contact-----*/
+    .contact-container {
+        flex-direction: column;
+        padding: 20px;
+        width: 80%;
+    }
+
+    .contact-left,
+    .contact-right {
+        width: 97%;
+    }
+
+    .contact-photo {
+        display: none;
+    }
+
+    .contact-right {
+        margin-top: -10rem;
+    }
+
+    .social-icons {
+        display: none;
+
+    }
+
+    .alert-container {
+    top: 20%;
+    left: 10.5%;
+    }
 }
