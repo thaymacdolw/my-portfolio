@@ -477,7 +477,6 @@ section {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 
 .about-content .row {
@@ -485,7 +484,6 @@ section {
     justify-content: center;
     flex-wrap: wrap;
     padding-top: 15rem;
-
 }
 
 .about-content .row .about-col-1 button {
@@ -524,7 +522,6 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .about-content .row .about-col-1 img {
@@ -567,6 +564,11 @@ section {
 }
 
 .tab-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+    flex-wrap: wrap;
     margin-right: 50px;
     font-size: 1.8rem;
     font-weight: 500;
@@ -599,7 +601,6 @@ section {
 body.dark-mode .github {
     content: url('/assets/logos/github-white.svg');
 }
-
 
 
 .tab-contents .ul-stacks,
@@ -1287,6 +1288,7 @@ form {
         background-color: var(--color14);
         color: var(--color7);
     }
+
     .nav-button button:hover i {
         background: var(--color1);
         color: var(--color7);
@@ -1357,23 +1359,30 @@ form {
         transition: background .3s, color .3s;
         font-size: 3rem;
     }
-   
+
 
     #menu-icon {
         display: block;
         font-size: 3rem;
         color: var(--color3);
         cursor: pointer;
-        padding: 1rem;
+
+    }
+   
+    .home-content h3 {
+        font-size: 3.5rem;
+        margin-left: -2rem;
     }
 
-    .home-content h3 {
-        font-size: 3.7rem;
+    .home-content h1 {
+        font-size: 4.5rem;
+        margin-left: -2rem;
     }
 
     .home .home-content p {
         align-items: center;
-        width: 90%;
+        width: 100%;
+        margin-left: -2rem;
     }
 
     .home-content .social-media a {
@@ -1385,6 +1394,16 @@ form {
     .home-content .social-media a i {
         font-size: 3.2rem;
     }
+    #btn {
+        margin-left: -2rem;
+        padding: 1rem 2rem;
+    }
+    .btn{
+        margin-left: 0.6rem;
+        padding: 1rem 2rem;
+    }
+   
+
 
     /* About section */
 
@@ -1397,32 +1416,55 @@ form {
     }
 
     .about .about-content .about-col-2 .subtitle-about {
-        margin-left: 8rem;
-        margin-top: -9rem;
+        margin-left: 4rem;
+        margin-top: -10rem;
     }
 
     .about .about-content .about-col-2 .about-description {
-        margin-left: 8.5rem;
-        width: 65%;
-
+        margin-left: -2rem;
+        width: 100%;
     }
 
     .about .about-content .tab-titles {
-        margin-left: 3rem;
+        margin-left: -2rem;
         width: 60%;
     }
 
-    .about .about-content .about-col-2 #stacks,
-    .about .about-content .about-col-2 #tools {
-        margin-left: 6rem;
-        width: 75%;
+    .tab-links p {
+        flex: 1 1 80%;
+        margin: 5px 0;
+        text-align: center;
     }
 
-    .about-content .about-col-2 #education,
-    .about-content .about-col-2 #languages,
-    .about-content .about-col-2 #curiosities {
-        margin-left: 8rem;
-        width: 70%;
+    .tab-links {
+        margin-right: 10px;
+    }
+    .tab-contents .ul-stacks,
+    .tab-contents .ul-tools {
+    flex: 1 1 calc(20% - 10px);
+    padding: 0;
+    margin-left: -2rem;
+}
+    
+    .tab-contents .ul-stacks li,
+    .tab-contents .ul-tools li {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 calc(10% - 5px);
+    padding: 0;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+  
+    .tab-contents .ul-stacks li,
+    .tab-contents .ul-tools li {
+        margin-right: 1rem;
+    }
+    .tab-contents .ul-education li,
+    .tab-contents .ul-languages li, 
+    .tab-contents .ul-curiosities li {
+        margin-left: -2rem;
+        margin-right: 1rem;
     }
 
     /*-------Portfólio----------*/
@@ -1439,6 +1481,7 @@ form {
     .portfolio-container .portfolio-box {
         width: 400px;
         height: 250px;
+        margin-left: -2.5rem;
 
 
     }
@@ -1492,7 +1535,7 @@ form {
     }
 
     .alert-container {
-    top: 20%;
-    left: 10.5%;
+        top: 20%;
+        left: 10.5%;
     }
 }
