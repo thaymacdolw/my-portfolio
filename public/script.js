@@ -352,41 +352,6 @@ scrollToTopButton.onclick = function (e) {
     scrollToTop();
 };
 
-//---------------Dark Mode -------------------
-let darkModeIcon = document.querySelector("#darkMode-icon");
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    if (savedTheme === 'dark' || (savedTheme === null && prefersDarkScheme)) {
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
-        darkModeIcon.classList.add('bx-sun');
-        darkModeIcon.classList.remove('bx-moon');
-    } else {
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
-        darkModeIcon.classList.add('bx-moon');
-        darkModeIcon.classList.remove('bx-sun');
-    }
-});
-
-darkModeIcon.onclick = () => {
-    darkModeIcon.classList.toggle("bx-sun");
-    darkModeIcon.classList.toggle("bx-moon");
-    document.body.classList.toggle("dark-mode");
-    document.body.classList.toggle("light-mode");
-
-    
-    if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
-    }
-};
-
 // Changing when typing in the textarea and input 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -410,7 +375,58 @@ $(document).ready(function () {
     });
 });
 
+// HAMBURGUER MENU AND DARK MODE 
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.querySelectorAll('.navbar a');
+    const darkModeIcon = document.getElementById('darkMode-icon');
+    
+    // Verificar o tema salvo no localStorage e aplicá-lo ao carregar a página
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        enableDarkMode();
+    } else {
+        disableDarkMode();
+    }
 
+    // Evento de clique no ícone de dark mode
+    darkModeIcon.addEventListener('click', function() {
+        if (document.body.classList.contains('dark-mode')) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+    });
 
+    // Função para ativar o modo escuro
+    function enableDarkMode() {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+        darkModeIcon.classList.add('bx-sun');
+        darkModeIcon.classList.remove('bx-moon');
+        localStorage.setItem('theme', 'dark');
+    }
 
+    // Função para desativar o modo escuro
+    function disableDarkMode() {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+        darkModeIcon.classList.add('bx-moon');
+        darkModeIcon.classList.remove('bx-sun');
+        localStorage.setItem('theme', 'light');
+    }
+
+    // Evento de clique no ícone de menu hamburguer
+    menuIcon.addEventListener('click', function() {
+        navbar.classList.toggle('show');
+    });
+
+    // Fechar o menu ao clicar em um link dentro dele
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navbar.classList.remove('show');
+        });
+    });
+});
 
