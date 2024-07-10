@@ -131,7 +131,7 @@ downloadButtons.forEach(function (button) {
 
                
                 document.body.removeChild(link);
-                window.URL.revokeObjectURL(link.href);
+                window.URL.revokeObjectURL(url);
             }
         };
         xhr.send();
