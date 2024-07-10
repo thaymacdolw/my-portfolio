@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://calm-citadel-57892-1a554fc6b84a.herokuapp.com/');
+        xhr.open('POST', 'https://calm-citadel-57892-1a554fc6b84a.herokuapp.com/send-email');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function () {
             console.log(xhr.responseText);
@@ -432,11 +432,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //Requisição Back-end
 
-const backendUrl = process.env.APP_BACKEND_URL;
+/*const backendUrl = process.env.APP_BACKEND_URL;
 
 fetch(`${backendUrl}/download-cv`)
   .then(response => response.json())
   .then(data => console.log(data))
-  .catch(error => console.error('Erro ao fazer requisição:', error));
+  .catch(error => console.error('Erro ao fazer requisição:', error));*/
 
 

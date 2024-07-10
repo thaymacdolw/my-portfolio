@@ -1,33 +1,31 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
-const app = express();
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+
+const app = express();
 
 //CORS
 const corsOptions = {
     origin: 'https://macdolw.netlify.app',
-    methods: ['GET', 'POST'], // Métodos permitidos
+    methods: ['GET', 'POST'], 
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
-
 app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-const PORT = process.env.PORT || 5000;
 
 //Middleware
-
+app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.post('/', (req, res) => {
+app.post('/send-email', (req, res) => {
     console.log(req.body);
 
     console.log('EMAIL_USER:', process.env.EMAIL_USER);
@@ -77,6 +75,11 @@ app.get('/download-cv', (req, res) => {
     });
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server running on' ${PORT}`)
+    console.log(`Server running on port ${PORT}`);
 });
