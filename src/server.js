@@ -1,9 +1,21 @@
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const app = express();
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+
+//CORS
+const corsOptions = {
+    origin: 'https://macdolw.netlify.app',
+    methods: ['GET', 'POST'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+
+
 
 const PORT = process.env.PORT || 5000;
 

@@ -109,7 +109,7 @@ var downloadButtons = document.querySelectorAll('.downloadButton');
 downloadButtons.forEach(function (button) {
     button.addEventListener('click', function () {
         
-        var serverUrl = 'http://localhost:5000/download-cv';
+        var serverUrl = 'https://calm-citadel-57892-1a554fc6b84a.herokuapp.com/download-cv';
 
         var xhr = new XMLHttpRequest();
         xhr.open('GET', serverUrl, true);
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/');
+        xhr.open('POST', 'https://calm-citadel-57892-1a554fc6b84a.herokuapp.com/');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function () {
             console.log(xhr.responseText);
@@ -429,4 +429,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+//Requisição Back-end
+
+const backendUrl = process.env.APP_BACKEND_URL;
+
+fetch(`${backendUrl}/download-cv`)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Erro ao fazer requisição:', error));
+
 
