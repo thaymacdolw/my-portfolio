@@ -109,7 +109,7 @@ var downloadButtons = document.querySelectorAll('.downloadButton');
 downloadButtons.forEach(function (button) {
     button.addEventListener('click', function () {
         
-        var serverUrl = 'https://calm-citadel-57892-1a554fc6b84a.herokuapp.com/download-cv';
+        var serverUrl = 'https://backend-myportfolio-a85dbee494f0.herokuapp.com/download-cv';
 
         var xhr = new XMLHttpRequest();
         xhr.open('GET', serverUrl, true);
