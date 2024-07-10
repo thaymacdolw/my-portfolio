@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://calm-citadel-57892-1a554fc6b84a.herokuapp.com/send-email');
+        xhr.open('POST', 'https://backend-myportfolio-a85dbee494f0.herokuapp.com/send-email');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function () {
             console.log(xhr.responseText);
