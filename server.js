@@ -8,8 +8,8 @@ const app = express();
 
 //CORS
 const corsOptions = {
-    origin: 'https://macdolw.netlify.app',
-    methods: ['GET', 'POST'], 
+    origin: 'http://localhost:4000',
+    methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
 app.use(cors(corsOptions));
@@ -27,6 +27,8 @@ app.get('/', (req, res) => {
 
 app.post('/send-email', (req, res) => {
     console.log(req.body);
+    console.log('Recebendo solicitação POST /send-email');
+    console.log('Corpo da solicitação:', req.body);
 
     console.log('EMAIL_USER:', process.env.EMAIL_USER);
     console.log('EMAIL_PASS:', process.env.EMAIL_PASS);
@@ -42,6 +44,10 @@ app.post('/send-email', (req, res) => {
         debug: true,
         logger: true
     });
+    // Adicionando eventos de debug
+    transporter.on('debug', (info) => {
+        console.log('Debug:', info);
+    });
 
     const mailOptions = {
         from: process.env.EMAIL_USER,
@@ -52,13 +58,13 @@ app.post('/send-email', (req, res) => {
     console.log('Attempting to send email...');
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log(error);
-            res.send('error');
+            console.log('Erro ao enviar email:', error);
+            res.json({ status: 'error' });
         } else {
-            console.log('Email sent:' + info.response);
-            res.send('success')
+            console.log('Email sent:', info.response);
+            res.json({ status: 'success' });
         }
-    })
+    });
 });
 
 
@@ -79,7 +85,12 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });

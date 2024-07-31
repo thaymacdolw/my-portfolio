@@ -4,8 +4,8 @@
   "description": "My portfolio created using Hmtl, Css and Js",
   "main": "script.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "node src/server.js dev"
+    "start": "node server.js",
+    "dev": "node server.js"
 },
   "keywords": [],
   "author": "",
