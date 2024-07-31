@@ -193,16 +193,24 @@ form.addEventListener("submit", (e) => {
     };
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/');
+    xhr.open('POST', 'http://localhost:4000/send-email');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
-        console.log(xhr.responseText);
-        if (xhr.responseText === 'success') {
-            showAlert('Message successfully sent!', 'success');
-            form.reset(); 
+        const responseText = xhr.responseText.trim();
+        if (responseText === 'success') {
+            console.log('Message successfully sent!');
+            showAlert('Message successfully sent!','success');
+            nameField.value = '';
+            emailField.value = '';
+            messageField.value = '';
         } else {
-            showAlert('Something went wrong!', 'error');
+            console.log('Something went wrong!');
+            showAlert('Something went wrong!','error');
         }
+    };
+    xhr.onerror = function () {
+        console.error('Network error occurred.');
+        showAlert('Network error occurred!', 'error');
     };
 
     xhr.send(JSON.stringify(formData));
