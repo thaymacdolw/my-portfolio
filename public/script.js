@@ -109,7 +109,7 @@ var downloadButtons = document.querySelectorAll('.downloadButton');
 downloadButtons.forEach(function (button) {
     button.addEventListener('click', function () {
         
-        var serverUrl = 'http://localhost:4000/download-cv';
+        var serverUrl = '/download-cv';
 
         var xhr = new XMLHttpRequest();
         xhr.open('GET', serverUrl, true);
@@ -193,7 +193,7 @@ form.addEventListener("submit", (e) => {
     };
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:4000/send-email');
+    xhr.open('POST', '/send-email');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
         const responseText = xhr.responseText.trim();
@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:4000/send-email');
+        xhr.open('POST', '/send-email');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function () {
             const responseText = xhr.responseText.trim();
@@ -443,13 +443,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//Requisição Back-end
 
-/*const backendUrl = process.env.APP_BACKEND_URL;
-
-fetch(`${backendUrl}/download-cv`)
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Erro ao fazer requisição:', error));*/
 
 
