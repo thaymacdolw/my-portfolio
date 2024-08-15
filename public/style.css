@@ -1099,6 +1099,7 @@ form {
 
 .alert {
     position: fixed;
+    display: none;
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
@@ -1110,11 +1111,13 @@ form {
 .alert.show {
     opacity: 1;
     animation: slideDown 0.5s forwards;
+    display: block;
 }
 
 .alert.hide {
     animation: slideUp 0.5s forwards;
     opacity: 0;
+    display: none;
 }
 
 .alert-container {
