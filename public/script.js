@@ -304,8 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.open('POST', '/send-email');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function () {
-            const responseText = xhr.responseText.trim();
-            if (responseText === 'success') {
+            const response = JSON.parse(xhr.responseText);
+            if (response.status === 'success') {
                 console.log('Message successfully sent!');
                 showAlert('Message successfully sent!','success');
                 nameField.value = '';

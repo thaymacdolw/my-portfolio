@@ -8,7 +8,7 @@ const app = express();
 
 //CORS
 const corsOptions = {
-    origin: 'http://localhost:4000',
+    origin: '/',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
