@@ -304,19 +304,28 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.open('POST', '/send-email');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function () {
-            const response = JSON.parse(xhr.responseText);
-            console.log('Response:', xhr.responseText);
-            if (response.status === 'success') {
-                console.log('Message successfully sent!');
-                showAlert('Message successfully sent!','success');
-                nameField.value = '';
-                emailField.value = '';
-                messageField.value = '';
-            } else {
-                console.log('Something went wrong!');
-                showAlert('Something went wrong!','error');
+            console.log('Response status:', xhr.status); // Adicione esta linha para depurar o status da resposta
+            console.log('Response text:', xhr.responseText); // Adicione esta linha para depurar o texto da resposta
+            
+            try {
+                const response = JSON.parse(xhr.responseText);
+                console.log('Parsed response:', response); // Adicione esta linha para depurar a resposta parseada
+                if (response.status === 'success') {
+                    console.log('Message successfully sent!');
+                    showAlert('Message successfully sent!', 'success');
+                    nameField.value = '';
+                    emailField.value = '';
+                    messageField.value = '';
+                } else {
+                    console.log('Something went wrong!');
+                    showAlert('Something went wrong!', 'error');
+                }
+            } catch (e) {
+                console.error('Error parsing response:', e);
+                showAlert('Unexpected error occurred!', 'error');
             }
         };
+    
         xhr.onerror = function () {
             console.error('Network error occurred.');
             showAlert('Network error occurred!', 'error');
