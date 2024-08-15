@@ -305,6 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function () {
             const response = JSON.parse(xhr.responseText);
+            console.log('Response:', xhr.responseText);
             if (response.status === 'success') {
                 console.log('Message successfully sent!');
                 showAlert('Message successfully sent!','success');
