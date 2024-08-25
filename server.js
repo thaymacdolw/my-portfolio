@@ -8,7 +8,7 @@ const app = express();
 
 //CORS
 const corsOptions = {
-    origin: 'https://thayna-macdolws-portfolio-1-0.onrender.com',
+    origin: '',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
@@ -58,8 +58,8 @@ app.post('/send-email', (req, res) => {
     console.log('Attempting to send email...');
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log('Erro ao enviar email:', error);
-            res.json({ status: 'error' });
+            console.log('Erro ao enviar email:', error.message);
+            res.json({ status: 'error', message: error.message });
         } else {
             console.log('Email sent:', info.response);
             res.json({ status: 'success' });

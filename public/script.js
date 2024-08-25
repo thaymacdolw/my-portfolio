@@ -11,14 +11,14 @@ ScrollReveal().reveal('.about-col-1', { origin: 'left' });
 /// Only one scroll will be necessary 
 gsap.registerPlugin(ScrollToPlugin);
 let currentSection = 0;
-const sectionsScroll = document.querySelectorAll('.section');
+const sectionsScroll = document.querySelectorAll('section');
 
 function scrollToSection(index) {
     if (index < 0 || index >= sections.length) return;
     currentSection = index;
     gsap.to(window, {
         scrollTo: { y: sections[index], autoKill: false },
-        duration: 0.9
+        duration: 0.3
     });
 }
 
@@ -32,9 +32,6 @@ window.addEventListener('wheel', (event) => {
     }
 });
 
-window.addEventListener('scroll', (event) => {
-    event.preventDefault();
-}, { passive: false });
 
 // -------------- Pop-out Modal ----------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -90,16 +87,6 @@ window.onscroll = () => {
 
     header.classList.toggle('sticky', window.scrollY > 100);
 };
-//------------------scroll-behavior: smooth--------------------------------
-
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
 
 //--------------CV DOWNLOAD--------------------
 
@@ -196,18 +183,27 @@ form.addEventListener("submit", (e) => {
     xhr.open('POST', '/send-email');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
-        const responseText = xhr.responseText.trim();
-        if (responseText === 'success') {
+        let response;
+        try {
+            response = JSON.parse(xhr.responseText.trim());  // Tenta parsear a resposta JSON
+        } catch (e) {
+            console.error('Failed to parse JSON:', e);
+            showAlert('Something went wrong!', 'error');
+            return;  // Se falhar, interrompe a execução
+        }
+    
+        if (response.status === 'success') {  // Verifica a chave 'status'
             console.log('Message successfully sent!');
-            showAlert('Message successfully sent!','success');
-            nameField.value = '';
-            emailField.value = '';
-            messageField.value = '';
+            showAlert('Message successfully sent!', 'success');
+            form.querySelector(".name").value = '';  // Limpa os campos do formulário
+            form.querySelector(".email").value = ''; 
+            form.querySelector(".message").value = ''; 
         } else {
             console.log('Something went wrong!');
-            showAlert('Something went wrong!','error');
+            showAlert('Something went wrong!', 'error');
         }
     };
+    
     xhr.onerror = function () {
         console.error('Network error occurred.');
         showAlert('Network error occurred!', 'error');
@@ -359,21 +355,24 @@ const scrollFunc = () => {
 };
 
 window.addEventListener("scroll", scrollFunc);
+
 const scrollToTop = () => {
+    // Ensure the currentSection is reset when scrolling to the top
+    currentSection = 0;
     
-    const c = document.documentElement.scrollTop || document.body.scrollTop;
-
-    if (c > 0) {
-        window.requestAnimationFrame(scrollToTop);
-        
-        window.scrollTo(0, c - c / 10);
-    };
+    gsap.to(window, {
+        scrollTo: { y: 0, autoKill: false },
+        duration: 0,
+        ease: "power2.inOut",  // Adjust the easing function for a smooth start
+        onComplete: () => {
+            // Ensure currentSection is correctly reset
+            currentSection = 0;
+        }
+    });
 };
 
-scrollToTopButton.onclick = function (e) {
-    e.preventDefault();
-    scrollToTop();
-};
+scrollToTopButton.addEventListener('click', scrollToTop);
+
 
 // Changing when typing in the textarea and input 
 
