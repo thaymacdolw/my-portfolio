@@ -362,7 +362,7 @@ const scrollToTop = () => {
     
     gsap.to(window, {
         scrollTo: { y: 0, autoKill: false },
-        duration: 2,
+        duration: 0,
         ease: "power2.inOut",  // Adjust the easing function for a smooth start
         onComplete: () => {
             // Ensure currentSection is correctly reset
