@@ -8,7 +8,7 @@ const app = express();
 
 //CORS
 const corsOptions = {
-    origin: 'http://localhost:4000',
+    origin: 'https://thayna-macdolws-portfolio-1-0.onrender.com',
     /*http://localhost:4000*/
     /*https://thayna-macdolws-portfolio-1-0.onrender.com*/
     methods: ['GET', 'POST'],
