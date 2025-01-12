@@ -43,6 +43,13 @@ window.addEventListener('wheel', (event) => {
     }
     event.preventDefault();
 });
+window.addEventListener('resize', () => {
+    sectionsScroll.forEach((section, index) => {
+        if (index === currentSection) {
+            scrollToSection(index);
+        }
+    });
+});
 
 
 // -------------- Pop-out Modal ----------------------
