@@ -1243,9 +1243,32 @@ form {
 /*--------BREAKPOINTS---------*/
 
 /*Mobile Devices (up to 480px)*/
-@media (min-width: 2560px) {
+@media (min-width: 2260px) {
+    .logo {
+        font-size: 3rem;
+    }
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2),
+    .navbar a:nth-child(3),
+    .navbar a:nth-child(4){
+        font-size: 3rem;
+    }
+
+    .nav-button button {
+        font-size: 2rem;
+    }
+
+    .nav-button button i {
+        font-size: 2rem;
+    }
+    #darkMode-icon {
+        font-size: 3rem;
+    }
     .home .techs-container .techs-box {
         display: none;
+    }
+    .home-content {
+        size: 10rem;
     }
 }
 
