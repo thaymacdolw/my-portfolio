@@ -11,18 +11,29 @@ ScrollReveal().reveal('.about-col-1', { origin: 'left' });
 /// Only one scroll will be necessary 
 gsap.registerPlugin(ScrollToPlugin);
 let currentSection = 0;
+let isScrolling = false;
 const sectionsScroll = document.querySelectorAll('section');
 
 function scrollToSection(index) {
-    if (index < 0 || index >= sections.length) return;
+    if (index < 0 || index >= sectionsScroll.length) return;
     currentSection = index;
+    // Animação suave para a seção alvo
     gsap.to(window, {
-        scrollTo: { y: sections[index], autoKill: false },
-        duration: 0.3
+        scrollTo: { y: sectionsScroll[index].offsetTop, autoKill: false },
+        duration: 0.1,
+        ease: "power2.out",
+        onComplete: () => {
+            isScrolling = false;
+        }
     });
 }
 
 window.addEventListener('wheel', (event) => {
+
+    if (isScrolling) return;
+
+    isScrolling = true;
+
     if (event.deltaY > 0) {
         // Scrolling down
         scrollToSection(currentSection + 1);
@@ -30,6 +41,7 @@ window.addEventListener('wheel', (event) => {
         // Scrolling up
         scrollToSection(currentSection - 1);
     }
+    event.preventDefault();
 });
 
 
